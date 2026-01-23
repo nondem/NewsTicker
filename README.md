@@ -12,4 +12,5 @@ Examples:<br>
 <br>
 Downloads the latest 6 headlines from 12 news sources.<br>
 Sources are configured in settings.h as well as Banner rotation & redraw speed.<br>
-Headline downloads are in phases to reduce potential blocking by google news. 
+Headline downloads are in phases to reduce potential blocking by google news. <br>
+Wifi config uses captive portal triggered when no connection is found on boot.
