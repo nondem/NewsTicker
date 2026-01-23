@@ -10,6 +10,6 @@ Examples:<br>
   { "REUTERS",     "https://news.google.com/rss/search?q=site:reuters.com",   ORANGE, CHARCOAL,WHITE },<br>
   { "ASSOC. PRESS","https://news.google.com/rss/search?q=site:apnews.com",    BLACK, GOLD,    BLACK }, <br>
 <br>
-  Note the banner color definitions are configurable.
-
-
+Downloads the latest 6 headlines from 12 news sources.<br>
+Sources are configured in settings.h as well as Banner rotation & redraw speed.<br>
+Headline downloads are in phases to reduce potential blocking by google news. 
