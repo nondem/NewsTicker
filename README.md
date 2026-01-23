@@ -11,7 +11,7 @@ Examples:<br>
 { "ASSOC. PRESS","https://news.google.com/rss/search?q=site:apnews.com",    BLACK, GOLD,    BLACK }, <br>
 <br>
 Downloads the latest 6 headlines from 12 news sources.<br>
-Sources are configured in settings.h as well as Banner rotation & redraw speed.<br>
+Operations are configured in settings.h including Banner rotation & redraw speed.<br>
 Headline downloads are in phases to reduce potential blocking by google news. <br>
 Loads 36 headlines from 6 sources on boot and waits 5 minutes to pull another 36 from the other 6 sources. <br>
 Downloads 36 updated headlines from 6 of the 12 sources every 20 minutes.<br><br>
