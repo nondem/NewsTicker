@@ -30,4 +30,4 @@ Headlines are weighted by age to determine order & Headlines with publication da
 
 Operations:<br>
 Single tap generates QRCode links currently displayed headlines - Tap to cycle through them and Long press to return to ticker.<br>
-Long press: Force download of the next batch of headlines. CAUTION: Do this too much at once and you might blocked for a day or two.<br>
+Long press: Force download of the next batch of headlines. CAUTION: Do this too much at once and you might get blocked for a day or two.<br>
