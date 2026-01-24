@@ -212,7 +212,7 @@ void drawSignalBars(int x, int y, int rssi, bool force) {
     uint16_t color = CHARCOAL; 
     if (i < activeBars) {
        if (i == 0) color = RED;               
-       else if (i < 3) color = ORANGE;        
+       else if (i < 2) color = ORANGE;        
        else color = GREEN;                    
     }
     fillRect(xOffset, yOffset, 4, h, color);

@@ -4,13 +4,20 @@
 // --- USER SETTINGS ---
 #define EASTER_EGG_TEXT     "Randys Waterfall Ticker 2026"
 #define USER_TIMEZONE_HOUR  -5  // EST
-#define OFFLINE_MODE        false //broken
+#define OFFLINE_MODE        false 
+
 // --- SYSTEM SETTINGS ---
 #define WDT_TIMEOUT_SECONDS 90  
-#define UPDATE_INTERVAL_MS  1200000 // [UPDATED] 20 Minutes (Split Batch Schedule)
-#define CAROUSEL_INTERVAL_MS 20000  // 20 Seconds per slide
+#define UPDATE_INTERVAL_MS  900000  // 15 Minutes (Cycles 1/3rd of sources each time)
+#define CAROUSEL_INTERVAL_MS 15000  // 15 Seconds per slide
 #define WAVE_DELAY_MS       500          
-#define PARSE_TIMEOUT_MS    6000      
+#define PARSE_TIMEOUT_MS    10000   // [UPDATED] 10 Seconds (Stall Killer)
+
+// Limits based on user request
+#define MAX_POOL_SIZE       130     // Accommodates 18 sources
+#define MAX_HEADLINE_LEN    114     // Hard crop for display width
+#define FETCH_LIMIT_PER_SRC 6       // 18 * 6 = 108 max stories
+#define MAX_AGE_SECONDS     129600  // 36 Hours
 
 // --- PIN DEFINITIONS (CYD / ESP32-2432S028R) ---
 #define LCD_CS      15
@@ -46,5 +53,6 @@
 #define TEAL        0x0415 
 #define DARKBLUE    0x0010
 #define VIOLET      0x901F
+#define GREY        0x8410
 
 #endif

@@ -4,66 +4,150 @@
 #include <esp_task_wdt.h>
 #include <algorithm> 
 
-// --- CONFIGURATION ---
-#define MAX_HEADLINE_LEN   110     
-// [CRITICAL FIX] 12 Sources * 6 Stories = 72 Total. Fits safely in 80.
-#define FETCH_LIMIT_PER_SRC 6      
-#define MAX_POOL_SIZE      80      
-#define MAX_AGE_SECONDS    172800  
-
 // --- GLOBAL STORAGE ---
 std::vector<Story> megaPool;
+std::vector<int> playbackQueue; // The "Deck of Cards" for display
 int failureCount = 0;
 bool lastSyncFailed = false; 
 
-// --- SOURCE DEFINITIONS ---
-NewsSource sources[12] = {
+// --- SOURCE DEFINITIONS (18 TOTAL) ---
+NewsSource sources[18] = {
+  // BATCH A (0-5)
   { "FOX NEWS",    "https://news.google.com/rss/search?q=site:foxnews.com",   WHITE, DARKRED, YELLOW },
   { "CNN",         "https://news.google.com/rss/search?q=site:cnn.com",       BLACK, WHITE,   RED },
   { "USA TODAY",   "https://news.google.com/rss/search?q=site:usatoday.com",  WHITE, NAVY,    CYAN },
   { "CHRISTIAN SCI", "https://news.google.com/rss/search?q=site:csmonitor.com",    WHITE,  CHARCOAL, YELLOW },
-
   { "NBC NEWS",      "https://news.google.com/rss/search?q=site:nbcnews.com",       WHITE,  VIOLET,   WHITE },
   { "ABC NEWS",      "https://news.google.com/rss/search?q=site:abcnews.go.com",    WHITE,  BLACK,    WHITE },
 
-  
+  // BATCH B (6-11)
   { "NY POST",       "https://news.google.com/rss/search?q=site:nypost.com",        WHITE,  RED,      WHITE },
-
   { "DAILY WIRE",  "https://news.google.com/rss/search?q=site:dailywire.com", WHITE,  BLUE,    WHITE },
- { "NEWSWEEK",      "https://news.google.com/rss/search?q=site:newsweek.com",      WHITE,  RED,      WHITE },
+  { "NEWSWEEK",      "https://news.google.com/rss/search?q=site:newsweek.com",      WHITE,  RED,      WHITE },
   { "REUTERS",     "https://news.google.com/rss/search?q=site:reuters.com",   ORANGE, CHARCOAL,WHITE },
   { "ASSOC. PRESS","https://news.google.com/rss/search?q=site:apnews.com",    BLACK, GOLD,    BLACK }, 
-  { "HUFFPOST",    "https://news.google.com/rss/search?q=site:huffpost.com",  WHITE, TEAL,    WHITE }  
+  { "HUFFPOST",    "https://news.google.com/rss/search?q=site:huffpost.com",  WHITE, TEAL,    WHITE },
+
+  // BATCH C (12-17)
+  { "WSJ",         "https://news.google.com/rss/search?q=site:wsj.com",       BLACK, WHITE,   BLACK },
+  { "FORBES",      "https://news.google.com/rss/search?q=site:forbes.com",     WHITE, DARKBLUE, GOLD },
+  { "REASON",      "https://news.google.com/rss/search?q=site:reason.com",     BLACK, ORANGE,  BLACK },
+  { "SKY NEWS",    "https://news.google.com/rss/search?q=site:news.sky.com",   WHITE, RED,     WHITE },
+  { "BBC NEWS",    "https://news.google.com/rss/search?q=site:bbc.com",        WHITE, DARKRED, WHITE },
+  { "POLITICO",    "https://news.google.com/rss/search?q=site:politico.com",   WHITE, BLUE,    RED }
 };
 
+// --- HELPER: RESET PLAYBACK QUEUE ---
+void resetPlaybackQueue() {
+    playbackQueue.clear();
+    for (int i = 0; i < megaPool.size(); i++) {
+        playbackQueue.push_back(i);
+    }
+    std::random_shuffle(playbackQueue.begin(), playbackQueue.end());
+    Serial.print("[NewsCore] Queue Reshuffled. Size: ");
+    Serial.println(playbackQueue.size());
+}
+
+// --- HELPER: GET NEXT UNIQUE STORY ---
+int getNextStoryIndex(const std::vector<int>& forbiddenSources) {
+    if (megaPool.empty()) return 0;
+
+    if (playbackQueue.empty()) resetPlaybackQueue();
+
+    std::vector<int> skippedCards;
+    int foundIndex = -1;
+
+    // Search deck for non-conflicting story
+    while (!playbackQueue.empty()) {
+        int idx = playbackQueue.back();
+        playbackQueue.pop_back();
+
+        if (idx >= megaPool.size()) continue;
+
+        int src = megaPool[idx].sourceIndex;
+        bool conflict = false;
+        
+        // Check against forbidden list
+        for (int banned : forbiddenSources) {
+            if (src == banned) { 
+                conflict = true; 
+                break; 
+            }
+        }
+
+        if (!conflict) {
+            foundIndex = idx;
+            break; 
+        } else {
+            skippedCards.push_back(idx); // Save conflict for later
+        }
+    }
+
+    // Fallback: If EVERYTHING conflicts, take the first skipped one
+    if (foundIndex == -1) {
+        if (!skippedCards.empty()) {
+            foundIndex = skippedCards[0];
+            skippedCards.erase(skippedCards.begin());
+        } else {
+            // Should not happen unless pool is empty
+            resetPlaybackQueue();
+            if(!playbackQueue.empty()) {
+                foundIndex = playbackQueue.back();
+                playbackQueue.pop_back();
+            } else {
+                return 0;
+            }
+        }
+    }
+
+    // Return skipped cards to the BOTTOM of the deck
+    if (!skippedCards.empty()) {
+        playbackQueue.insert(playbackQueue.begin(), skippedCards.begin(), skippedCards.end());
+    }
+
+    return foundIndex;
+}
+
 String cleanText(String raw) {
+  // 1. Basic HTML Cleanup
   raw.replace("<![CDATA[", ""); raw.replace("]]>", "");
   raw.replace("&apos;", "'"); raw.replace("&#39;", "'");
   raw.replace("&quot;", "\""); raw.replace("&amp;", "&");
   raw.replace("&lt;", "<"); raw.replace("&gt;", ">");
   raw.replace("&nbsp;", " ");
-  
   raw.replace("…", "..."); 
 
+  // 2. Fancy Quotes/Dashes
   raw.replace("&#8217;", "'"); raw.replace("&#8216;", "'");
   raw.replace("&#8220;", "\""); raw.replace("&#8221;", "\"");
   raw.replace("&#8211;", "-"); raw.replace("&#8212;", "-");
   raw.replace("&#8230;", "...");
-  
   raw.replace("’", "'"); raw.replace("“", "\"");
   raw.replace("”", "\""); raw.replace("–", "-");
 
+  // 3. HTML Tags
   raw.replace("<b>", ""); raw.replace("</b>", "");
   raw.replace("<i>", ""); raw.replace("</i>", "");
   raw.replace("<strong>", ""); raw.replace("</strong>", "");
 
+  // 4. Prefix Scrubbing (Quality Filter)
   String upper = raw; upper.toUpperCase();
   if (upper.startsWith("LIVE: ")) raw = raw.substring(6);
-  else if (upper.startsWith("WATCH: ")) raw = raw.substring(7);
-  else if (upper.startsWith("VIDEO: ")) raw = raw.substring(7);
-  else if (upper.startsWith("UPDATE: ")) raw = raw.substring(8);
-  else if (upper.startsWith("BREAKING: ")) raw = raw.substring(10);
+  if (upper.startsWith("WATCH: ")) raw = raw.substring(7);
+  if (upper.startsWith("VIDEO: ")) raw = raw.substring(7);
+  if (upper.startsWith("UPDATE: ")) raw = raw.substring(8);
+  if (upper.startsWith("BREAKING: ")) raw = raw.substring(10);
+  if (upper.startsWith("OPINION: ")) raw = raw.substring(9);
+  if (upper.startsWith("REVIEW: ")) raw = raw.substring(8);
 
+  // 5. Suffix Scrubbing (Remove " - SourceName")
+  int dashSuffix = raw.lastIndexOf(" - ");
+  if (dashSuffix > 10) raw = raw.substring(0, dashSuffix);
+  
+  int pipeSuffix = raw.lastIndexOf(" | ");
+  if (pipeSuffix > 10) raw = raw.substring(0, pipeSuffix);
+
+  // 6. Character Purification
   String purified = "";
   for (int i = 0; i < raw.length(); i++) {
       char c = raw.charAt(i);
@@ -73,6 +157,7 @@ String cleanText(String raw) {
   }
   raw = purified;
 
+  // 7. Whitespace normalization
   raw.replace("\n", " "); raw.replace("\t", " "); raw.replace("\r", " "); 
   while(raw.indexOf("  ") >= 0) {
       raw.replace("  ", " ");
@@ -80,6 +165,7 @@ String cleanText(String raw) {
   }
   raw.trim();
 
+  // 8. Smart Crop (114 Chars)
   if (raw.length() > MAX_HEADLINE_LEN) {
       int cutOff = raw.lastIndexOf(' ', MAX_HEADLINE_LEN - 3);
       if (cutOff > 0) {
@@ -99,30 +185,31 @@ String cleanURL(String raw) {
   return raw;
 }
 
+// Validity Check (Junk Filter)
 bool isValidStory(String headline) {
     if (headline.length() < 20) return false; 
     String upper = headline; upper.toUpperCase();
     
+    // Hard blocks (Not news)
     if (upper.indexOf("TODAYS HEADLINES") >= 0) return false;
-    if (upper.indexOf("TODAY'S HEADLINES") >= 0) return false;
     if (upper.indexOf("MORNING BRIEFING") >= 0) return false;
     if (upper.indexOf("EVENING BRIEFING") >= 0) return false;
     if (upper.indexOf("DAILY DIGEST") >= 0) return false;
-    if (upper.indexOf("THE LATEST:") >= 0) return false;
-    if (upper.indexOf("YOUR MONDAY") >= 0) return false;
-    if (upper.indexOf("YOUR TUESDAY") >= 0) return false;
-    if (upper.indexOf("YOUR WEDNESDAY") >= 0) return false;
-    if (upper.indexOf("YOUR THURSDAY") >= 0) return false;
-    if (upper.indexOf("YOUR FRIDAY") >= 0) return false;
-    if (upper.indexOf("WEEKEND BRIEFING") >= 0) return false;
-
-    if (upper.indexOf("PODCAST") >= 0) return false;
-    if (upper.indexOf("AUDIO:") >= 0) return false;
-    if (upper.indexOf("LISTEN:") >= 0) return false;
-    if (upper.indexOf("WATCH:") >= 0) return false;
-
     if (upper.indexOf("SUBSCRIBE TO") >= 0) return false;
     if (upper.indexOf("SIGN UP") >= 0) return false;
+    if (upper.indexOf("JAVASCRIPT") >= 0) return false;
+    if (upper.indexOf("ACCESS DENIED") >= 0) return false;
+    if (upper.indexOf("404 NOT FOUND") >= 0) return false;
+
+    // Quality blocks (Clickbait/Fluff)
+    if (upper.startsWith("HOW TO ")) return false;
+    if (upper.startsWith("BEST OF ")) return false;
+    if (upper.startsWith("DEALS: ")) return false;
+    if (upper.startsWith("HOROSCOPE")) return false;
+    if (upper.startsWith("WORDLE ")) return false;
+    if (upper.startsWith("CROSSWORD ")) return false;
+    if (upper.startsWith("10 THINGS ")) return false;
+    if (upper.startsWith("5 THINGS ")) return false;
     
     return true; 
 }
@@ -208,30 +295,15 @@ void ensureWiFi() {
   if (WiFi.status() != WL_CONNECTED) failureCount++; else failureCount = 0;
 }
 
-void pruneOldStories() {
-    esp_task_wdt_reset(); 
-    if (megaPool.empty()) return;
-    time_t newest = 0;
-    for(const auto& s : megaPool) { 
-        if(s.timestamp > newest) newest = s.timestamp; 
-    }
-    time_t cutoff = newest - MAX_AGE_SECONDS;
-    int before = megaPool.size();
-    megaPool.erase(
-        std::remove_if(megaPool.begin(), megaPool.end(), [cutoff](const Story& s) {
-            return (s.timestamp < cutoff);
-        }),
-        megaPool.end()
-    );
-    int after = megaPool.size();
-    Serial.print("[Prune] Removed "); Serial.print(before - after); 
-    Serial.println(" stories older than 48h.");
-    esp_task_wdt_reset(); 
-}
-
 void fetchAndPool(int sourceIdx) {
   esp_task_wdt_reset();
   
+  // Heap Guard
+  if (ESP.getFreeHeap() < 20000) {
+      Serial.println("[NewsCore] Low Heap (<20k). Skipping fetch.");
+      return;
+  }
+
   if (megaPool.size() >= MAX_POOL_SIZE) {
       Serial.println("[NewsCore] Max Pool Size Reached. Stopping fetch.");
       return;
@@ -254,7 +326,6 @@ void fetchAndPool(int sourceIdx) {
       int storiesFound = 0;
       
       while(storiesFound < FETCH_LIMIT_PER_SRC) {
-        if (ESP.getFreeHeap() < 20000) break; 
         
         if (safeFind(stream, "<item>")) {
            String tempTitle = "", tempDate = "", tempLink = "";
@@ -280,11 +351,15 @@ void fetchAndPool(int sourceIdx) {
                if (s.url.length() < 12 || !s.url.startsWith("http")) continue;
                if (s.headline.length() < 15) continue; 
 
-               int suffix = s.headline.lastIndexOf(" - ");
-               if (suffix == -1) suffix = s.headline.lastIndexOf(" | ");
-               if (suffix > 5) s.headline = s.headline.substring(0, suffix);
-               
-               if (isValidStory(s.headline)) {
+               // Local De-Duplication (Same Source Only)
+               bool isSameSourceDuplicate = false;
+               for(const auto& existing : megaPool) {
+                   if (existing.sourceIndex == sourceIdx && existing.headline.equals(s.headline)) {
+                       isSameSourceDuplicate = true; break;
+                   }
+               }
+
+               if (isValidStory(s.headline) && !isSameSourceDuplicate) {
                    s.timestamp = parseRSSDate(tempDate);
                    s.timeStr = formatTime(s.timestamp);
                    s.sourceIndex = sourceIdx;
@@ -329,28 +404,34 @@ void refreshNewsData(int batchIndex) {
       Serial.println("[NewsCore] WiFi Failure. Aborting.");
       lastSyncFailed = true; 
       failureCount++;
-      if (failureCount >= 10) ESP.restart(); 
+      // Nuclear Option: Reboot after 4 failures
+      if (failureCount >= 4) ESP.restart(); 
       return; 
   }
 
-  if (ESP.getFreeHeap() < 25000) {
-      Serial.println("[NewsCore] Low Heap. Aborting.");
-      lastSyncFailed = true; 
-      return;
-  }
-
-  int start = batchIndex * 6; int end = start + 6;
+  // 3-PHASE CLEANUP
+  int start = batchIndex * 6; 
+  int end = start + 6;
+  
   megaPool.erase(std::remove_if(megaPool.begin(), megaPool.end(), [start, end](const Story& s) {
         return (s.sourceIndex >= start && s.sourceIndex < end);
     }), megaPool.end());
 
+  // Fetch new data
   for(int i = start; i < end; i++) {
      fetchAndPool(i);
      esp_task_wdt_reset();
   }
   
-  pruneOldStories();
-  std::random_shuffle(megaPool.begin(), megaPool.end());
+  // Sort by date (Newest first)
+  time_t newest = 0;
+  for(const auto& s : megaPool) { if(s.timestamp > newest) newest = s.timestamp; }
+  time_t cutoff = newest - MAX_AGE_SECONDS; // 36 Hours
+
+  // Prune very old stories
+  megaPool.erase(std::remove_if(megaPool.begin(), megaPool.end(), [cutoff](const Story& s) {
+        return (s.timestamp < cutoff);
+    }), megaPool.end());
 
   if (megaPool.empty()) {
       Story s;
@@ -362,31 +443,9 @@ void refreshNewsData(int batchIndex) {
       lastSyncFailed = true; 
   }
 
-  time_t newest = 0;
-  for(const auto& s : megaPool) { if(s.timestamp > newest) newest = s.timestamp; }
-  time_t cutoff = newest - 86400; 
-
-  std::stable_sort(megaPool.begin(), megaPool.end(), [cutoff](const Story& a, const Story& b) {
-      bool aFresh = (a.timestamp >= cutoff);
-      bool bFresh = (b.timestamp >= cutoff);
-      if (aFresh && !bFresh) return true;
-      if (!aFresh && bFresh) return false;
-      return false; 
-  });
+  // IMPORTANT: Re-build the playback deck because indices have changed
+  resetPlaybackQueue();
   
   esp_task_wdt_reset();
   Serial.print("Total Stories: "); Serial.println(megaPool.size());
-}
-
-int findStrictStory(int startSearchIndex, int forbidSource1, int forbidSource2) {
-  if (megaPool.empty()) return 0;
-  int count = 0;
-  int idx = startSearchIndex;
-  while (count < megaPool.size()) {
-     idx = idx % megaPool.size();
-     int src = megaPool[idx].sourceIndex;
-     if (src != forbidSource1 && src != forbidSource2) return idx;
-     idx++; count++;
-  }
-  return startSearchIndex % megaPool.size();
 }

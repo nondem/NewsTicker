@@ -18,21 +18,24 @@ struct NewsSource {
 struct Story {
   String headline;
   String timeStr;
-  String url;           // For QR Codes
+  String url;           
   time_t timestamp;     
   int sourceIndex;
 };
 
 // --- EXTERNAL VARIABLES ---
 extern std::vector<Story> megaPool;
-extern NewsSource sources[12]; 
+extern NewsSource sources[18]; 
 extern int failureCount;
-
-// [NEW] Global Status Flag
 extern bool lastSyncFailed; 
 
 // --- CORE FUNCTIONS ---
 void refreshNewsData(int batchIndex);
-int findStrictStory(int startSearchIndex, int forbidSource1, int forbidSource2);
+
+// Returns the index of the next unique story, avoiding sources in the forbidden list
+int getNextStoryIndex(const std::vector<int>& forbiddenSources); 
+
+// Call this if the pool changes drastically to force a reshuffle
+void resetPlaybackQueue();
 
 #endif

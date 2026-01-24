@@ -1,5 +1,8 @@
 /*
- * RANDY'S NEWS TICKER v37 (ROTATION FIX & VISUAL POLISH)
+ * RANDY'S NEWS TICKER v50 (FINAL PRODUCTION BUILD)
+ * - 18 Sources (3-Batch Cycle)
+ * - Smart 24h Cleanse (Replaces a download slot)
+ * - Generous 10s Timeout
  */
 #include <QRCode_Library.h> 
 #include <WiFi.h>
@@ -13,12 +16,9 @@
 #include "TickerUI.h"
 
 RandyNet myWifi("Randy-News-Config");
-
-int globalSearchPtr = 0; 
 bool waveActive = false;
 int waveStep = 0;
 unsigned long lastWaveStepTime = 0;
-// [NEW] Animation Safety Timer
 unsigned long waveStartTime = 0; 
 
 int activeRowIndices[3] = {0, 0, 0};
@@ -34,14 +34,27 @@ unsigned long lastTapTime = 0;
 
 void updateNews() {
   refreshNewsData(batchState);
-  if (batchState == 0) batchState = 1; else batchState = 0;
   
-  // Re-calc indices to show new data immediately
-  globalSearchPtr = 0;
-  activeRowIndices[0] = findStrictStory(0, -1, -1);
-  activeRowIndices[1] = findStrictStory(activeRowIndices[0] + 1, megaPool[activeRowIndices[0]].sourceIndex, -1);
-  activeRowIndices[2] = findStrictStory(activeRowIndices[1] + 1, megaPool[activeRowIndices[0]].sourceIndex, megaPool[activeRowIndices[1]].sourceIndex);
-  globalSearchPtr = activeRowIndices[2] + 1;
+  // Cycle 0 -> 1 -> 2 -> 0
+  batchState++;
+  if (batchState > 2) batchState = 0;
+  
+  // Force reset queue to ensure we see new data
+  resetPlaybackQueue();
+
+  // Draw immediately with new safe logic
+  std::vector<int> usedSources;
+  
+  // 1. Get first story
+  activeRowIndices[0] = getNextStoryIndex(usedSources);
+  if(activeRowIndices[0] < megaPool.size()) usedSources.push_back(megaPool[activeRowIndices[0]].sourceIndex);
+  
+  // 2. Get second story (avoiding source of #1)
+  activeRowIndices[1] = getNextStoryIndex(usedSources);
+  if(activeRowIndices[1] < megaPool.size()) usedSources.push_back(megaPool[activeRowIndices[1]].sourceIndex);
+  
+  // 3. Get third story (avoiding source of #1 and #2)
+  activeRowIndices[2] = getNextStoryIndex(usedSources);
   
   drawHeader();
   drawRowDirect(0, activeRowIndices[0]);
@@ -71,15 +84,16 @@ void exitQRMode() {
 }
 
 void setup() {
-  delay(1000);//This gives the power rail a second to stabilize before the ESP32 starts gulping current.
+  delay(1000);
   Serial.begin(115200);
   pinMode(TOUCH_CS, OUTPUT); pinMode(SD_CS, OUTPUT);
   pinMode(TOUCH_IRQ, INPUT);
   pinMode(LED_RED, OUTPUT); pinMode(LED_GREEN, OUTPUT); pinMode(LED_BLUE, OUTPUT);
   digitalWrite(LED_RED, HIGH);
   digitalWrite(LED_GREEN, HIGH); digitalWrite(LED_BLUE, HIGH);
-  digitalWrite(TOUCH_CS, HIGH); digitalWrite(SD_CS, HIGH); 
-  delay(500); // Power stability
+  digitalWrite(TOUCH_CS, HIGH);
+  digitalWrite(SD_CS, HIGH); 
+  delay(500); 
   
   initDisplay();
 
@@ -100,7 +114,7 @@ void setup() {
 
   randomSeed(micros());
 
-  esp_task_wdt_deinit(); 
+  esp_task_wdt_deinit();
   esp_task_wdt_config_t wdt_config = { .timeout_ms = WDT_TIMEOUT_SECONDS * 1000, .trigger_panic = true };
   esp_task_wdt_init(&wdt_config);
   esp_task_wdt_add(NULL);
@@ -117,8 +131,18 @@ void loop() {
   long remaining = UPDATE_INTERVAL_MS - (millis() - lastFetch);
   if (lastFetch == 0 || remaining < 0) remaining = 0;
 
+  // --- [NEW] SMART REBOOT (24H CLEANSE) ---
+  // If uptime > 24 hours AND we are < 60 seconds from the next download...
+  // Reboot instead of downloading. This gives a fresh RAM slate instantly.
+  if (millis() > 86400000UL && remaining < 60000) {
+      Serial.println("[System] 24H Cleanse Triggered. Rebooting...");
+      drawText(10, 0, 400, "DAILY MAINTENANCE...", YELLOW, BLACK, 2, true);
+      delay(2000);
+      ESP.restart();
+  }
+
   if (!qrMode) {
-      drawSyncStatus(remaining, false); 
+      drawSyncStatus(remaining, false);
       if (millis() - lastSecond >= 2000) {
           drawWiFiIcon();
           lastSecond = millis();
@@ -126,7 +150,6 @@ void loop() {
   }
 
   // --- ANIMATION SAFETY RESET ---
-  // If wave gets stuck active for > 3 seconds, kill it.
   if (waveActive && millis() - waveStartTime > 3000) {
       Serial.println("[UI] Animation stuck. Resetting.");
       waveActive = false;
@@ -137,21 +160,29 @@ void loop() {
      if(megaPool.size() > 0) {
         waveActive = true;
         waveStep = 0;
-        waveStartTime = millis(); // Track start time
+        waveStartTime = millis(); 
         cycleHeaderTheme(); 
         drawHeader();
+
+        // Use 'usedSources' to track and prevent duplicate sources on screen
+        std::vector<int> usedSources;
         
-        int next0 = findStrictStory(globalSearchPtr, -1, -1);
-        int next1 = findStrictStory(next0 + 1, megaPool[next0].sourceIndex, -1);
-        int next2 = findStrictStory(next1 + 1, megaPool[next0].sourceIndex, megaPool[next1].sourceIndex);
+        // 1. Get first story
+        int next0 = getNextStoryIndex(usedSources);
+        if (next0 < megaPool.size()) usedSources.push_back(megaPool[next0].sourceIndex);
+        
+        // 2. Get second story (avoiding source of #1)
+        int next1 = getNextStoryIndex(usedSources);
+        if (next1 < megaPool.size()) usedSources.push_back(megaPool[next1].sourceIndex);
+        
+        // 3. Get third story (avoiding source of #1 and #2)
+        int next2 = getNextStoryIndex(usedSources);
         
         activeRowIndices[0] = next0; activeRowIndices[1] = next1; activeRowIndices[2] = next2;
-        globalSearchPtr = next2 + 1;
         
         lastCarousel = millis();
         lastWaveStepTime = millis();
      } else {
-         // Pool empty? Just reset timer so we don't spam checks
          lastCarousel = millis();
      }
   }
@@ -179,9 +210,9 @@ void loop() {
         updateNews();
         
         if (isFastBoot) {
-            Serial.println("Initial Load Complete. Pausing 5 mins before Batch B.");
-            lastFetch = millis() - (UPDATE_INTERVAL_MS - 300000);
-            isFastBoot = false; 
+            // First boot: Wait only 3 mins for next batch (to fill pool faster)
+            lastFetch = millis() - (UPDATE_INTERVAL_MS - 180000);
+            isFastBoot = false;
         } else {
             lastFetch = millis();
         }
@@ -211,7 +242,7 @@ void loop() {
     
     if (isLongPress) {
         if (!qrMode) {
-            drawSyncStatus(0, true); 
+            drawSyncStatus(0, true);
             updateNews();
             lastFetch = millis();
         } else {
@@ -224,7 +255,6 @@ void loop() {
             touchCounter = 1;
         }
         lastTapTime = millis();
-
         if (touchCounter >= 5) {
              triggerEasterEgg();
              touchCounter = 0;
@@ -238,7 +268,7 @@ void loop() {
              }
         }
     }
-    delay(200); 
+    delay(200);
   }
   delay(50);
 }
