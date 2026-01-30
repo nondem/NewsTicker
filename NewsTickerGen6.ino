@@ -1,10 +1,9 @@
 /*
  * RANDY'S NEWS TICKER v50 (FINAL PRODUCTION BUILD)
- * - 18 Sources (3-Batch Cycle)
+ * - 30 Sources (5-Batch Cycle)
  * - Smart 24h Cleanse (Replaces a download slot)
  * - Generous 10s Timeout
  */
-#include <QRCode_Library.h> 
 #include <WiFi.h>
 #include <esp_task_wdt.h> 
 #include <ArduinoOTA.h>
@@ -28,6 +27,12 @@ int qrSelection = 0;
 int batchState = 0;
 bool isFastBoot = true;
 
+unsigned long getBatchIntervalMs(int batchIndex) {
+    // TEMP: Run first two batches 5 minutes apart for testing
+    if (batchIndex == 0 || batchIndex == 1) return 300000UL;
+    return UPDATE_INTERVAL_MS;
+}
+
 // Easter Egg State
 int touchCounter = 0;
 unsigned long lastTapTime = 0;
@@ -35,9 +40,9 @@ unsigned long lastTapTime = 0;
 void updateNews() {
   refreshNewsData(batchState);
   
-  // Cycle 0 -> 1 -> 2 -> 0
+    // Cycle 0 -> 1 -> 2 -> 3 -> 4 -> 0
   batchState++;
-  if (batchState > 2) batchState = 0;
+    if (batchState > 4) batchState = 0;
   
   // Force reset queue to ensure we see new data
   resetPlaybackQueue();
@@ -114,10 +119,9 @@ void setup() {
 
   randomSeed(micros());
 
-  esp_task_wdt_deinit();
-  esp_task_wdt_config_t wdt_config = { .timeout_ms = WDT_TIMEOUT_SECONDS * 1000, .trigger_panic = true };
-  esp_task_wdt_init(&wdt_config);
-  esp_task_wdt_add(NULL);
+    esp_task_wdt_deinit();
+    esp_task_wdt_init(WDT_TIMEOUT_SECONDS, true);
+    esp_task_wdt_add(NULL);
 }
 
 void loop() {
@@ -128,7 +132,8 @@ void loop() {
   ArduinoOTA.handle();
   esp_task_wdt_reset();
   
-  long remaining = UPDATE_INTERVAL_MS - (millis() - lastFetch);
+    unsigned long currentInterval = getBatchIntervalMs(batchState);
+    long remaining = (long)currentInterval - (millis() - lastFetch);
   if (lastFetch == 0 || remaining < 0) remaining = 0;
 
   // --- [NEW] SMART REBOOT (24H CLEANSE) ---
@@ -142,7 +147,7 @@ void loop() {
   }
 
   if (!qrMode) {
-      drawSyncStatus(remaining, false);
+    drawSyncStatus(remaining, false, (long)currentInterval);
       if (millis() - lastSecond >= 2000) {
           drawWiFiIcon();
           lastSecond = millis();
@@ -206,12 +211,13 @@ void loop() {
   // --- FETCH TRIGGER ---
   if (remaining == 0 && !qrMode) { 
     if (WiFi.status() == WL_CONNECTED) {
-        drawSyncStatus(0, true);
+        drawSyncStatus(0, true, (long)currentInterval);
         updateNews();
-        
+
+        unsigned long nextInterval = getBatchIntervalMs(batchState);
         if (isFastBoot) {
             // First boot: Wait only 3 mins for next batch (to fill pool faster)
-            lastFetch = millis() - (UPDATE_INTERVAL_MS - 180000);
+            lastFetch = millis() - (nextInterval - 180000);
             isFastBoot = false;
         } else {
             lastFetch = millis();
@@ -220,7 +226,7 @@ void loop() {
     else {
         Serial.println("WiFi Down! Retrying in 60s...");
         WiFi.reconnect();
-        lastFetch = millis() - (UPDATE_INTERVAL_MS - 60000); 
+        lastFetch = millis() - (currentInterval - 60000); 
     }
     if (lastFetch == 0) lastFetch = 1;
   }
@@ -242,7 +248,7 @@ void loop() {
     
     if (isLongPress) {
         if (!qrMode) {
-            drawSyncStatus(0, true);
+            drawSyncStatus(0, true, (long)currentInterval);
             updateNews();
             lastFetch = millis();
         } else {

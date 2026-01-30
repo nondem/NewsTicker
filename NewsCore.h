@@ -13,6 +13,7 @@ struct NewsSource {
   uint16_t color;       
   uint16_t bgColor;     
   uint16_t titleColor;  
+  bool isWordpress;
 };
 
 struct Story {
@@ -25,7 +26,7 @@ struct Story {
 
 // --- EXTERNAL VARIABLES ---
 extern std::vector<Story> megaPool;
-extern NewsSource sources[18]; 
+extern NewsSource sources[30]; 
 extern int failureCount;
 extern bool lastSyncFailed; 
 

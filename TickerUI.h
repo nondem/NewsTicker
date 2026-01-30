@@ -15,7 +15,7 @@ void drawHeader();
 void drawWiFiIcon();
 void drawRowDirect(int rowIndex, int storyIndex);
 // [NEW] Sync Status Indicator
-void drawSyncStatus(long remainingMs, bool isSyncing);
+void drawSyncStatus(long remainingMs, bool isSyncing, long intervalMs);
 // --- SPECIAL SCREENS ---
 void triggerEasterEgg();
 void showConfigScreen();

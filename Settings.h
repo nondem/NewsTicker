@@ -12,11 +12,13 @@
 #define CAROUSEL_INTERVAL_MS 15000  // 15 Seconds per slide
 #define WAVE_DELAY_MS       500          
 #define PARSE_TIMEOUT_MS    10000   // [UPDATED] 10 Seconds (Stall Killer)
+#define SOURCE_FETCH_TIMEOUT_MS 20000  // Max time per source fetch
+#define ITEM_PARSE_TIMEOUT_MS   8000   // Max time per item parse
 
 // Limits based on user request
-#define MAX_POOL_SIZE       130     // Accommodates 18 sources
+#define MAX_POOL_SIZE       180     // Accommodates 30 sources
 #define MAX_HEADLINE_LEN    114     // Hard crop for display width
-#define FETCH_LIMIT_PER_SRC 6       // 18 * 6 = 108 max stories
+#define FETCH_LIMIT_PER_SRC 6       // 30 * 6 = 180 max stories
 #define MAX_AGE_SECONDS     129600  // 36 Hours
 
 // --- PIN DEFINITIONS (CYD / ESP32-2432S028R) ---
@@ -54,5 +56,8 @@
 #define DARKBLUE    0x0010
 #define VIOLET      0x901F
 #define GREY        0x8410
+#define MAROON      0x8000
+#define PURPLE      0x8010
+#define DARKGREEN   0x02A0
 
 #endif

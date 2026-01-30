@@ -36,10 +36,11 @@ void drawWiFiIcon() {
   drawSignalBars(400, 0, rssi, false); 
 }
 
-void drawSyncStatus(long remainingMs, bool isSyncing) {
+void drawSyncStatus(long remainingMs, bool isSyncing, long intervalMs) {
     int barWidth = 480;
     if (!isSyncing && remainingMs > 0) {
-        barWidth = map(remainingMs, 0, UPDATE_INTERVAL_MS, 0, 480);
+        long safeInterval = intervalMs > 0 ? intervalMs : UPDATE_INTERVAL_MS;
+        barWidth = map(remainingMs, 0, safeInterval, 0, 480);
     }
     
     // Bar is at Y=18 (height 2). Text at Y=0 (height 16). Gap is Y=16,17. Perfect.
