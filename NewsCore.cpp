@@ -11,6 +11,18 @@ std::vector<int> playbackQueue; // The "Deck of Cards" for display
 int failureCount = 0;
 bool lastSyncFailed = false; 
 
+// --- SOURCE-LEVEL STATISTICS ---
+struct SourceStats {
+  int fetched = 0;      // Total items fetched
+  int accepted = 0;    // Items added to pool
+  int duplicates = 0;  // Duplicate rejections
+  int parseErrors = 0; // Parse/validation failures
+  int consecutiveFails = 0; // Consecutive failures
+  unsigned long lastFetchMs = 0; // Last fetch timestamp
+};
+SourceStats sourceStats[30] = {};
+
+
 // --- SOURCE DEFINITIONS (30 TOTAL) ---
 NewsSource sources[30] = {
     // BATCH A (0-5) - PROBLEMATIC SOURCES FOR DEBUGGING
@@ -385,10 +397,16 @@ String safeReadUntilEndTag(WiFiClient* stream, const char* endTag, int maxLen) {
 
 String extractTagValue(const String& xml, const char* openTag, const char* closeTag) {
     int start = xml.indexOf(openTag);
-    if (start < 0) return "";
+    if (start < 0) {
+        Serial.print("[WARN] Missing tag: "), Serial.println(openTag);
+        return "";
+    }
     start += strlen(openTag);
     int end = xml.indexOf(closeTag, start);
-    if (end < 0) return "";
+    if (end < 0 || end <= start) {
+        Serial.print("[WARN] Malformed tag: "), Serial.println(closeTag);
+        return "";
+    }
     return xml.substring(start, end);
 }
 
@@ -466,6 +484,9 @@ void fetchAndPool(int sourceIdx) {
     Serial.print("[NewsCore] Fetching: ");
     Serial.println(sources[sourceIdx].name);
   
+  // Per-source error tracking for debugging
+  static int sourceErrors[30] = {0};
+  
   // Heap Guard
   if (ESP.getFreeHeap() < 20000) {
       Serial.println("[NewsCore] Low Heap (<20k). Skipping fetch.");
@@ -519,7 +540,7 @@ void fetchAndPool(int sourceIdx) {
            String tempTitle = "", tempDate = "", tempLink = "", tempDesc = "", tempContent = "";
            bool isWp = sources[sourceIdx].isWordpress;
            // WordPress sources have large content blocks; increase buffer for full extraction
-           int itemMaxLen = isWp ? 3000 : 1500;
+           int itemMaxLen = isWp ? 4000 : 1500;
            String itemXml = safeReadUntilEndTagWithTimeout(stream, "</item>", itemMaxLen, ITEM_PARSE_TIMEOUT_MS);
            if (itemXml == "") {
                Serial.print("[DEBUG] Item #"); Serial.print(itemsProcessed); Serial.println(" - Parse timeout");
@@ -653,6 +674,17 @@ void refreshNewsData(int batchIndex) {
 
   Serial.print("Fetch Start. Batch: "); Serial.println(batchIndex);
   
+  // Reset stats for this batch
+  int start = batchIndex * 6;
+  int end = start + 6;
+  for(int i = start; i < end; i++) {
+      sourceStats[i].fetched = 0;
+      sourceStats[i].accepted = 0;
+      sourceStats[i].duplicates = 0;
+      sourceStats[i].parseErrors = 0;
+  }
+  
+  
   if (megaPool.capacity() < 100) megaPool.reserve(100);
 
   esp_task_wdt_reset();
@@ -673,9 +705,6 @@ void refreshNewsData(int batchIndex) {
   }
 
   // 3-PHASE CLEANUP
-  int start = batchIndex * 6; 
-  int end = start + 6;
-  
   megaPool.erase(std::remove_if(megaPool.begin(), megaPool.end(), [start, end](const Story& s) {
         return (s.sourceIndex >= start && s.sourceIndex < end);
     }), megaPool.end());
