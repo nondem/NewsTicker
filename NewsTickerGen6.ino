@@ -28,7 +28,7 @@ int batchState = 0;
 bool isFastBoot = true;
 
 unsigned long getBatchIntervalMs(int batchIndex) {
-    // TEMP: Run first two batches 5 minutes apart for testing
+    // Production: batches 0/1 run 5 minutes apart; others use normal 15-minute interval
     if (batchIndex == 0 || batchIndex == 1) return 300000UL;
     return UPDATE_INTERVAL_MS;
 }
