@@ -484,8 +484,8 @@ void fetchAndPool(int sourceIdx) {
     Serial.print("[NewsCore] Fetching: ");
     Serial.println(sources[sourceIdx].name);
   
-  // Per-source error tracking for debugging
-  static int sourceErrors[30] = {0};
+  // Per-source tracking
+  sourceStats[sourceIdx].lastFetchMs = millis();
   
   // Heap Guard
   if (ESP.getFreeHeap() < 20000) {
@@ -537,6 +537,7 @@ void fetchAndPool(int sourceIdx) {
         
         if (safeFind(stream, "<item>")) {
            itemsProcessed++;
+           sourceStats[sourceIdx].fetched++;
            String tempTitle = "", tempDate = "", tempLink = "", tempDesc = "", tempContent = "";
            bool isWp = sources[sourceIdx].isWordpress;
            // WordPress sources have large content blocks; increase buffer for full extraction
@@ -544,6 +545,8 @@ void fetchAndPool(int sourceIdx) {
            String itemXml = safeReadUntilEndTagWithTimeout(stream, "</item>", itemMaxLen, ITEM_PARSE_TIMEOUT_MS);
            if (itemXml == "") {
                Serial.print("[DEBUG] Item #"); Serial.print(itemsProcessed); Serial.println(" - Parse timeout");
+               sourceStats[sourceIdx].parseErrors++;
+               sourceStats[sourceIdx].consecutiveFails++;
                continue;
            }
            
@@ -597,43 +600,56 @@ void fetchAndPool(int sourceIdx) {
                
                if (s.url.length() < 12 || !s.url.startsWith("http")) {
                    Serial.println("[DEBUG]   REJECTED: Invalid URL");
+                   sourceStats[sourceIdx].parseErrors++;
+                   sourceStats[sourceIdx].consecutiveFails++;
                    continue;
                }
                if (s.headline.length() < 15) {
                    Serial.println("[DEBUG]   REJECTED: Headline too short");
+                   sourceStats[sourceIdx].parseErrors++;
+                   sourceStats[sourceIdx].consecutiveFails++;
                    continue;
                }
 
                // Local De-Duplication (Same Source Only) - O(1) set lookup
                if (existingHeadlines.find(s.headline) != existingHeadlines.end()) {
                    Serial.println("[DEBUG]   REJECTED: Duplicate");
+                   sourceStats[sourceIdx].duplicates++;
                    continue;
                }
 
                if (!isValidStory(s.headline)) {
                    Serial.println("[DEBUG]   REJECTED: Failed validation filter");
+                   sourceStats[sourceIdx].parseErrors++;
+                   sourceStats[sourceIdx].consecutiveFails++;
                    continue;
                }
 
                s.timestamp = parseRSSDate(tempDate);
                if (s.timestamp == 0) {
                    Serial.println("[DEBUG]   REJECTED: Invalid date");
+                   sourceStats[sourceIdx].parseErrors++;
                    consecutiveParseFailures++;
+                   sourceStats[sourceIdx].consecutiveFails++;
                    continue;
                }
                consecutiveParseFailures = 0;
+               sourceStats[sourceIdx].consecutiveFails = 0;
                
                s.timeStr = formatTime(s.timestamp);
                s.sourceIndex = sourceIdx;
                megaPool.push_back(s);
                existingHeadlines.insert(s.headline);
                storiesFound++;
+               sourceStats[sourceIdx].accepted++;
                Serial.print("[DEBUG]   ACCEPTED! Stories from this source: "); Serial.println(storiesFound);
                
                if (megaPool.size() >= MAX_POOL_SIZE) break;
            } else {
                Serial.println("[DEBUG]   REJECTED: No title");
                consecutiveParseFailures++;
+               sourceStats[sourceIdx].parseErrors++;
+               sourceStats[sourceIdx].consecutiveFails++;
            }
            
            if (consecutiveParseFailures > 3) {
@@ -659,11 +675,15 @@ void fetchAndPool(int sourceIdx) {
     } else {
         Serial.print("HTTP Error: "); Serial.println(httpCode);
         lastSyncFailed = true; 
+        sourceStats[sourceIdx].parseErrors++;
+        sourceStats[sourceIdx].consecutiveFails++;
     }
     http.end();
   } else {
       Serial.println("Connection Failed.");
       lastSyncFailed = true;
+      sourceStats[sourceIdx].parseErrors++;
+      sourceStats[sourceIdx].consecutiveFails++;
   }
 }
 
@@ -778,5 +798,17 @@ void refreshNewsData(int batchIndex) {
           Serial.print("[DEBUG]   Source "); Serial.print(src); Serial.print(" ("); 
           Serial.print(sources[src].name); Serial.print("): "); Serial.println(count);
       }
+  }
+
+  // Batch summary (per-source stats)
+  Serial.println("[SUMMARY] Batch source stats:");
+  for (int src = start; src < end; src++) {
+      Serial.print("[SUMMARY] ");
+      Serial.print(src); Serial.print(" ("); Serial.print(sources[src].name); Serial.print(") ");
+      Serial.print("fetched="); Serial.print(sourceStats[src].fetched);
+      Serial.print(" accepted="); Serial.print(sourceStats[src].accepted);
+      Serial.print(" dup="); Serial.print(sourceStats[src].duplicates);
+      Serial.print(" parseErr="); Serial.print(sourceStats[src].parseErrors);
+      Serial.print(" consecFail="); Serial.println(sourceStats[src].consecutiveFails);
   }
 }
