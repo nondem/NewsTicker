@@ -740,12 +740,10 @@ void refreshNewsData(int batchIndex) {
   for(const auto& s : megaPool) { if(s.timestamp > newest) newest = s.timestamp; }
   time_t cutoff = newest - MAX_AGE_SECONDS; // 36 Hours
   
-  // Exempt problematic and local news sources from age pruning
-  // These sources return older aggregated articles and should not be filtered by age
-  // BATCH A: 0=Valdosta, 1=Thomasville, 2=Moultrie (Google News)
-  // BATCH B: 5=Wakulla Sun (older articles in feed)
-  const int exemptSources[] = {0, 1, 2, 5};
-  const int exemptSourceCount = 4;
+  // Exempt ONLY Google News aggregators (0=Valdosta, 1=Thomasville, 2=Moultrie)
+  // These return older/incorrectly dated articles due to Google News aggregation
+  const int exemptSources[] = {0, 1, 2};
+  const int exemptSourceCount = 3;
   
   bool isExempt[30] = {false};
   for(int i = 0; i < exemptSourceCount; i++) {
@@ -754,7 +752,7 @@ void refreshNewsData(int batchIndex) {
   
   Serial.print("[DEBUG] Before age pruning: "); Serial.println(megaPool.size());
 
-  // Prune very old stories, but NEVER prune exempt sources
+  // Prune very old stories, but exempt Google News aggregators
   megaPool.erase(std::remove_if(megaPool.begin(), megaPool.end(), [cutoff, &isExempt](const Story& s) {
         return (s.timestamp < cutoff && !isExempt[s.sourceIndex]);
     }), megaPool.end());
