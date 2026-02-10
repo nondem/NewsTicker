@@ -1,0 +1,1750 @@
+[RandyNet] Starting...
+[RandyNet] Found saved credentials for: uno
+[RandyNet] Connecting...
+[RandyNet] Connected! IP: 10.1.3.10
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+
+[RandyNet] Starting...
+[RandyNet] Found saved credentials for: uno
+[RandyNet] Connecting............
+[RandyNet] Connected! IP: 10.1.3.10
+
+
+##########################################
+###  NEWS REFRESH CYCLE STARTING      ###
+##########################################
+[NewsCore] Batch Index: 0
+[NewsCore] Batch Range: Sources 0 - 5
+[DEBUG] Pre-fetch pool size: 0
+[DEBUG] Pre-fetch free heap: 225592
+[DEBUG] WiFi status: Connected
+[DEBUG] WiFi RSSI: -36
+
+========================================
+[NewsCore] Fetching: VALDOSTA DAILY
+[NewsCore] Source URL: https://news.google.com/rss/search?q=site:valdostadailytimes.com
+[NewsCore] Is WordPress: No
+[DEBUG] Current pool size: 0
+[DEBUG] Free heap: 219976
+[DEBUG] HTTP Code: 200
+[DEBUG] Item #1 XML len: 792
+[DEBUG]   Title: Best of Contest - Valdosta Daily Times
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiTEFVX3lxT...
+[DEBUG]   Date: Mon, 09 Dec 2024 03:58:38 GMT
+[DEBUG] cleanText input length: 38
+[DEBUG] cleanText preview: Best of Contest - Valdosta Daily Times
+[DEBUG] cleanText output length: 15
+[DEBUG] cleanText result: Best of Contest
+[DEBUG]   Cleaned Title: Best of Contest
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiTEFVX3lxTE1rdDEyY1ZDcjgzZXRrbVBFNmpPSHp2bjcyYmlrSnV2bHZPVFJvc2o3NHlrOGtGQTBUUmQ1RHZCSzZ0aGRKejA2R1VEN0k?oc=5
+[DEBUG] isValidStory checking: Best of Contest
+[DEBUG] isValidStory: REJECTED - too short
+[DEBUG]   REJECTED: Failed validation filter
+[DEBUG] Item #2 XML len: 1034
+[DEBUG]   Title: Lowndes Co. Property Trans. Feb. 7 - Valdosta Dail...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMif0FVX3lxT...
+[DEBUG]   Date: Sat, 07 Feb 2026 15:23:19 GMT
+[DEBUG] cleanText input length: 57
+[DEBUG] cleanText preview: Lowndes Co. Property Trans. Feb. 7 - Valdosta Daily Times
+[DEBUG] cleanText output length: 34
+[DEBUG] cleanText result: Lowndes Co. Property Trans. Feb. 7
+[DEBUG]   Cleaned Title: Lowndes Co. Property Trans. Feb. 7
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMif0FVX3lxTE56Q1gtcERicnhtOVJNVDNPZ2NKU083eTNGR3NOUTZheEIwRWFCSTg4aDhvVkI4M3NzeHM4bzF6T04tcUplV3pNRWdzNDRWeGgzT2ZyQTNuQ0JWcjRBQWYzckE2bFZTM2JlaFNLOEl2Q3BtZVg1b3FSNEFHUGo5TVE?oc=5
+[DEBUG] isValidStory checking: Lowndes Co. Property Trans. Feb. 7
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 1
+[DEBUG] Item #3 XML len: 1451
+[DEBUG]   Title: Southern Regional Technical College celebrates thi...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiywFBVV95c...
+[DEBUG]   Date: Mon, 02 Feb 2026 12:59:30 GMT
+[DEBUG] cleanText input length: 111
+[DEBUG] cleanText preview: Southern Regional Technical College celebrates third cohort of Street to Station
+[DEBUG] cleanText output length: 88
+[DEBUG] cleanText result: Southern Regional Technical College celebrates third cohort of Street to Station Program
+[DEBUG]   Cleaned Title: Southern Regional Technical College celebrates thi...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiywFBVV95cUxONGZGbjFxa1lOUm5nLXFtQ3hTLW1mZVFIOTRQZ2V5c0pvb19ydldPcWN0MXctTDJEUDFUQ1Z5X3VvaXhhVXBEbWo5M29WcHpLdFdFTmJDTHlxWTZvXzR3RE9GRUwzNWpoeGNmdzdEa2g3eVVoT2I1RzgwLUdmTHVtV3lGNHhjaXFVNkFTV0xtODVwdU9uaDVpUWdUaDRRTmJVdlFBa0hoZGczRFExUEJ2S0kwZVY1ZGF0a0pIQkVsSmp5Q2JqdFNYcEFaNA?oc=5
+[DEBUG] isValidStory checking: Southern Regional Technical College celebrates third cohort 
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 2
+[WARN] Item truncated at 1500 bytes
+[DEBUG] Item #4 XML len: 1500
+[DEBUG]   Title: Lowndes High School’s Dave brothers win Congress...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMi7gFBVV95c...
+[DEBUG]   Date: Sun, 01 Feb 2026 22:06:53 GMT
+[DEBUG] cleanText input length: 141
+[DEBUG] cleanText preview: Lowndes High School’s Dave brothers win Congressional App Challenge for fourth
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 107
+[DEBUG] cleanText result: Lowndes High School's Dave brothers win Congressional App Challenge for fourth time, advance to national...
+[DEBUG]   Cleaned Title: Lowndes High School's Dave brothers win Congressio...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMi7gFBVV95cUxPU2RCMExuT1NuaHBfdzRjc2xFazNUUklhcURjSnV5ZF9naDZEY042Skh1Rm5GOElkOGpvWVFtVy1XeUxPQ04zZ25MelFGVnlFSWlXSkcyQ2loTHNPc1Z3aWZiN0U2MVN0VWpxX1YzdDRKVWZQR3dKd01IOWxianhiNUJVa1dJM01aNGszYkp2QlhHYVk0cUhhRHlzQ2NscGdwVHV0bUtQWHp0ZURwNXNVVklSMlc3QnYzekhzNjFyeWxVWkxBU3NyT0dFNTFZWHBvQThFNXRmRExFS3lUbWF0RGlUOWRnOFNycy1sSGRB?oc=5
+[DEBUG] isValidStory checking: Lowndes High School's Dave brothers win Congressional App Ch
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 3
+[DEBUG] Item #5 XML len: 969
+[DEBUG]   Title: Education Briefs Jan. 31 - Valdosta Daily Times
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMidEFVX3lxT...
+[DEBUG]   Date: Thu, 29 Jan 2026 20:56:05 GMT
+[DEBUG] cleanText input length: 47
+[DEBUG] cleanText preview: Education Briefs Jan. 31 - Valdosta Daily Times
+[DEBUG] cleanText output length: 24
+[DEBUG] cleanText result: Education Briefs Jan. 31
+[DEBUG]   Cleaned Title: Education Briefs Jan. 31
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMidEFVX3lxTE96c0pOLVNOREp2cHlkRXQ2MVBlWS1BS3ZYVjY2Z1NxRnR2NEV2NE5BN1BwdkNMLUE1ZDMyQlhnZHZfNGNFeGlIS1FteVk0SnZ4a1MtbmRpYnRJb2F1REdlU3BOSU9CQy15d2JEMzg3a3owMWpm?oc=5
+[DEBUG] isValidStory checking: Education Briefs Jan. 31
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 4
+[DEBUG] Item #6 XML len: 1144
+[DEBUG]   Title: Girls on the Run spring season kicks off Feb. 9 - ...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMikwFBVV95c...
+[DEBUG]   Date: Wed, 04 Feb 2026 14:28:28 GMT
+[DEBUG] cleanText input length: 70
+[DEBUG] cleanText preview: Girls on the Run spring season kicks off Feb. 9 - Valdosta Daily Times
+[DEBUG] cleanText output length: 47
+[DEBUG] cleanText result: Girls on the Run spring season kicks off Feb. 9
+[DEBUG]   Cleaned Title: Girls on the Run spring season kicks off Feb. 9
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMikwFBVV95cUxON2ZkdldIdHNVeS1MWERKaXVKVnFNUW1FNXp0R0E1NDhjYjJTYzVaSHlpUzdWZkc4c2ZXVzdmTGo5c0wzRVRReGF4UnZRWW9mMjdOTDlTY3FFWVFxQUxLNk53QnQ4RVN5bUExNUdQR0g3STRsU010LUVBOVVPenhRQS1ZenA1bXJIRTlPRFJuY2VCejA?oc=5
+[DEBUG] isValidStory checking: Girls on the Run spring season kicks off Feb. 9
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 5
+[DEBUG] Item #7 XML len: 1096
+[DEBUG]   Title: Lowndes Co. Property Transactions Jan. 31 - Valdos...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiigFBVV95c...
+[DEBUG]   Date: Sat, 31 Jan 2026 13:52:40 GMT
+[DEBUG] cleanText input length: 64
+[DEBUG] cleanText preview: Lowndes Co. Property Transactions Jan. 31 - Valdosta Daily Times
+[DEBUG] cleanText output length: 41
+[DEBUG] cleanText result: Lowndes Co. Property Transactions Jan. 31
+[DEBUG]   Cleaned Title: Lowndes Co. Property Transactions Jan. 31
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiigFBVV95cUxPUzlTUVlhWmY1UVlxUU9xODI5Y3pNUnhvZzZjYklzWlVlY1hoQWR4b2h4YzhUeU5EUjR6N1Vtd29pVkhxNnUzY0FablZBMmFCWDY5UGdlZm9hYnItall5Q2NIZ1ZmdVlkVkdjSG5fMlVvZkEzTHcxVXUycWZMYmlJVHN6bEVwRXU2LUE?oc=5
+[DEBUG] isValidStory checking: Lowndes Co. Property Transactions Jan. 31
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 6
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 7
+[NewsCore] Stories added: 6
+[NewsCore] Total pool size now: 6
+[DEBUG] Final free heap: 164032
+[DEBUG] Source stats - fetched: 7, accepted: 6, duplicates: 0, parse errors: 1
+========================================
+
+
+========================================
+[NewsCore] Fetching: THOMASVILLE T-E
+[NewsCore] Source URL: https://news.google.com/rss/search?q=site:timesenterprise.com
+[NewsCore] Is WordPress: No
+[DEBUG] Current pool size: 6
+[DEBUG] Free heap: 217068
+[DEBUG] HTTP Code: 200
+[DEBUG] Item #1 XML len: 800
+[DEBUG]   Title: Thomasville Times-Enterprise - Thomasville Times-E...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiQkFVX3lxT...
+[DEBUG]   Date: Tue, 19 Apr 2016 05:52:34 GMT
+[DEBUG] cleanText input length: 59
+[DEBUG] cleanText preview: Thomasville Times-Enterprise - Thomasville Times-Enterprise
+[DEBUG] cleanText output length: 28
+[DEBUG] cleanText result: Thomasville Times-Enterprise
+[DEBUG]   Cleaned Title: Thomasville Times-Enterprise
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiQkFVX3lxTE5IQVBTemtXQWQ0MkFzYlo4TDh5RXNuOFZXNmxvOGJCQXVlTjBqQ1NNRVFvRXMwbFRJaGg0VUZRY0FtQQ?oc=5
+[DEBUG] isValidStory checking: Thomasville Times-Enterprise
+[DEBUG] isValidStory: ACCEPTED
+[WARN] Year out of range
+[DEBUG]   REJECTED: Invalid date
+[DEBUG] Item #2 XML len: 1373
+[DEBUG]   Title: Skeletal remains found outside Barnett’s Creek l...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMitwFBVV95c...
+[DEBUG]   Date: Mon, 02 Feb 2026 17:54:49 GMT
+[DEBUG] cleanText input length: 110
+[DEBUG] cleanText preview: Skeletal remains found outside Barnett’s Creek linked to possible missing man 
+[DEBUG] cleanText output length: 77
+[DEBUG] cleanText result: Skeletal remains found outside Barnett's Creek linked to possible missing man
+[DEBUG]   Cleaned Title: Skeletal remains found outside Barnett's Creek lin...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMitwFBVV95cUxPQTZJZ1ZQR1RuV1ZSNFdEaUxrSHJJNnhXRlJuc01CX0pFVmI5SmZoSTgzZW5XSnRRSkFwRV9Ra05KRkFCNm9CYVAwdDNrY3lHellEX04xVlBnMTRENWQ5TjV4dS00X1hRTmpXVkNBdDZ6YVBkMW9tdjZqaEdVVjBfSTFENkhqY29EZGt6Qnd3dWxUOFVKWURtLVhWM2xOc3Mtdk1YYy1mZEsyUmtxTVRLV3ZIVi1rSkU?oc=5
+[DEBUG] isValidStory checking: Skeletal remains found outside Barnett's Creek linked to pos
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 1
+[DEBUG] Item #3 XML len: 1024
+[DEBUG]   Title: Read recent and archived obituaries and memorial n...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiUEFVX3lxT...
+[DEBUG]   Date: Thu, 03 Nov 2016 17:50:12 GMT
+[DEBUG] cleanText input length: 133
+[DEBUG] cleanText preview: Read recent and archived obituaries and memorial notices from Thomasville Times 
+[DEBUG] cleanText output length: 91
+[DEBUG] cleanText result: Read recent and archived obituaries and memorial notices from Thomasville Times Enterprise.
+[DEBUG]   Cleaned Title: Read recent and archived obituaries and memorial n...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiUEFVX3lxTE5KbjBHTGc3UEozQ1liaTZtcllQdUxCdnlrOVNrcU1RMC1qcU5QZXpvVXAwZmRPOGxyUmx6TEo0enN5ZnozeXNyLUp3cDhRTWFM?oc=5
+[DEBUG] isValidStory checking: Read recent and archived obituaries and memorial notices fro
+[DEBUG] isValidStory: ACCEPTED
+[WARN] Year out of range
+[DEBUG]   REJECTED: Invalid date
+[DEBUG] Item #4 XML len: 1034
+[DEBUG]   Title: Ground/digger bees nest in lawn - Thomasville Time...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMie0FVX3lxT...
+[DEBUG]   Date: Mon, 16 Mar 2015 07:00:00 GMT
+[DEBUG] cleanText input length: 62
+[DEBUG] cleanText preview: Ground/digger bees nest in lawn - Thomasville Times-Enterprise
+[DEBUG] cleanText output length: 31
+[DEBUG] cleanText result: Ground/digger bees nest in lawn
+[DEBUG]   Cleaned Title: Ground/digger bees nest in lawn
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMie0FVX3lxTFAyTlJ3M0UxX1JFQjNYOXdONW9vU3lzNzBoeDVMRThINHMtOXUzQWVDdXlVY29BSVY4ajN3bG52blhxUS14eXU3SF9aUFBiQTNRd0VrVXJjTVNKLUw5TC16dUM0ZzJERUl1Vm1CSE5BMFJNSFE0YTJCelNiSQ?oc=5
+[DEBUG] isValidStory checking: Ground/digger bees nest in lawn
+[DEBUG] isValidStory: ACCEPTED
+[WARN] Year out of range
+[DEBUG]   REJECTED: Invalid date
+[DEBUG] Item #5 XML len: 1098
+[DEBUG]   Title: Vehicle pursuit leads to felony charges - Thomasvi...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMihgFBVV95c...
+[DEBUG]   Date: Thu, 01 Jan 2026 08:00:00 GMT
+[DEBUG] cleanText input length: 70
+[DEBUG] cleanText preview: Vehicle pursuit leads to felony charges - Thomasville Times-Enterprise
+[DEBUG] cleanText output length: 39
+[DEBUG] cleanText result: Vehicle pursuit leads to felony charges
+[DEBUG]   Cleaned Title: Vehicle pursuit leads to felony charges
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMihgFBVV95cUxOV1dDLWVxeFREdU80MzJCV2E1VWhZWDBpSGIzYS1iOHF4ZktTRnZQLWRQNklwcTN6NUZfdzFKdEtHMzE0SEpIOVJ5TVRUMWhSZllMV2h2MFFmV1RIcGVUNTlsVEViYWNGeWdlOGt0MGlrTU9ZN3VONGk1NDFVeVd6c2hwYS1FZw?oc=5
+[DEBUG] isValidStory checking: Vehicle pursuit leads to felony charges
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 2
+[DEBUG] Item #6 XML len: 1184
+[DEBUG]   Title: Local man charged in Crisp Co. vehicular homicide ...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMilAFBVV95c...
+[DEBUG]   Date: Tue, 02 Dec 2025 08:00:00 GMT
+[DEBUG] cleanText input length: 86
+[DEBUG] cleanText preview: Local man charged in Crisp Co. vehicular homicide crash - Thomasville Times-Ente
+[DEBUG] cleanText output length: 55
+[DEBUG] cleanText result: Local man charged in Crisp Co. vehicular homicide crash
+[DEBUG]   Cleaned Title: Local man charged in Crisp Co. vehicular homicide ...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMilAFBVV95cUxOZm9Da3RvbDVGYWVwcGVRMW9NS2tWellWNjc2akF1TGZleElETmlyYjZwTy1JRkthNy0yUGstQ3dVNzlSRWlyNVNUR0tpVTFCYlNwTWpjZk5VbWUyMmY5UUpHdVNtZGFxRFF3NjdtNy1qbUNscEdTTGNsUUlDQ0JVU0Nhcy16TF8zVGg0YVcwc05MZndC?oc=5
+[DEBUG] isValidStory checking: Local man charged in Crisp Co. vehicular homicide crash
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 3
+[DEBUG] Item #7 XML len: 854
+[DEBUG]   Title: Best of Thomasville - Thomasville Times-Enterprise
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiVEFVX3lxT...
+[DEBUG]   Date: Wed, 20 Aug 2025 18:56:30 GMT
+[DEBUG] cleanText input length: 50
+[DEBUG] cleanText preview: Best of Thomasville - Thomasville Times-Enterprise
+[DEBUG] cleanText output length: 19
+[DEBUG] cleanText result: Best of Thomasville
+[DEBUG]   Cleaned Title: Best of Thomasville
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiVEFVX3lxTE0tczNaT0VEN1c4WmpPbGUyMFNlX2JLNmpwR0NlWGNpc0JjQ0RnMXVjQ1RVN0RDV18yelVJNjUtV1NzTmJNVHJMbHlVbzlFWnVQWDRsbw?oc=5
+[DEBUG] isValidStory checking: Best of Thomasville
+[DEBUG] isValidStory: REJECTED - too short
+[DEBUG]   REJECTED: Failed validation filter
+[DEBUG] Item #8 XML len: 1285
+[DEBUG]   Title: Madison Dickerson joins the Sound of the South at ...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiqAFBVV95c...
+[DEBUG]   Date: Thu, 16 Oct 2025 07:00:00 GMT
+[DEBUG] cleanText input length: 96
+[DEBUG] cleanText preview: Madison Dickerson joins the Sound of the South at Troy University - Thomasville 
+[DEBUG] cleanText output length: 65
+[DEBUG] cleanText result: Madison Dickerson joins the Sound of the South at Troy University
+[DEBUG]   Cleaned Title: Madison Dickerson joins the Sound of the South at ...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiqAFBVV95cUxORjlaZlQ4WEJsbTdJUFFRbWpkUU9KOEdzbjdmUEFlSjZDdkN0bWZyV1poSWpVNkk3Q3gxdy1QLUZpR0YtblFCdExPRGRUQU1kbU1zUVpfQmk1YnFiT3lLQ2haelVFWmVoWWJ0RmpNbzE4XzR5WndfT0xDVWl2dHNfTXZYdzM0cHozODRsaFdObHM0LUJaTTBJaDhZRkJXU18zZGI2MWszTFM?oc=5
+[DEBUG] isValidStory checking: Madison Dickerson joins the Sound of the South at Troy Unive
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 4
+[DEBUG] Item #9 XML len: 1050
+[DEBUG]   Title: Agnes Carter celebrates 100 years - Thomasville Ti...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMifkFVX3lxT...
+[DEBUG]   Date: Thu, 02 Oct 2025 07:00:00 GMT
+[DEBUG] cleanText input length: 64
+[DEBUG] cleanText preview: Agnes Carter celebrates 100 years - Thomasville Times-Enterprise
+[DEBUG] cleanText output length: 33
+[DEBUG] cleanText result: Agnes Carter celebrates 100 years
+[DEBUG]   Cleaned Title: Agnes Carter celebrates 100 years
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMifkFVX3lxTE1qT2VXdlNYTGtPREZNQ3o2am5WT3lrelZ1QUNFOWN0MDkyMURMYVBKYWVaRmp4Z01xUnM2ejlMLW1ZSXVTS2VqM1FFWG9DTHRyMmJ1MGhWZm5kQm5tWFRTMmwwdzN6WlhqdDJKd2RZaHFKWTI3MTVabThOLVhidw?oc=5
+[DEBUG] isValidStory checking: Agnes Carter celebrates 100 years
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 5
+[DEBUG] Item #10 XML len: 1169
+[DEBUG]   Title: Property tax rates lowered for 12th year in a row ...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMikwFBVV95c...
+[DEBUG]   Date: Thu, 11 Sep 2025 07:00:00 GMT
+[DEBUG] cleanText input length: 80
+[DEBUG] cleanText preview: Property tax rates lowered for 12th year in a row - Thomasville Times-Enterprise
+[DEBUG] cleanText output length: 49
+[DEBUG] cleanText result: Property tax rates lowered for 12th year in a row
+[DEBUG]   Cleaned Title: Property tax rates lowered for 12th year in a row
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMikwFBVV95cUxOOWFobUVuWFR3WGJ1eXNlVURobTFRaFgzSUFaOVBQdUxmZ1M2c3E5enZHVU1mVTEzdmpUVnplcXcxa2x3cW92N1dCRG9iTHYybnZzUHJyNDRfSmVYVTZ6Rjd5Qjl4UlowV2pkWHVFQmxIVGNnbUFuaDBGVlh6RGJsY2hNaWp5ZWpUazFsMFJYWXNWek0?oc=5
+[DEBUG] isValidStory checking: Property tax rates lowered for 12th year in a row
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 6
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 10
+[NewsCore] Stories added: 6
+[NewsCore] Total pool size now: 12
+[DEBUG] Final free heap: 162620
+[DEBUG] Source stats - fetched: 10, accepted: 6, duplicates: 0, parse errors: 4
+========================================
+
+
+========================================
+[NewsCore] Fetching: MOULTRIE OBS
+[NewsCore] Source URL: https://news.google.com/rss/search?q=site:moultrieobserver.com
+[NewsCore] Is WordPress: No
+[DEBUG] Current pool size: 12
+[DEBUG] Free heap: 215256
+[DEBUG] HTTP Code: 200
+[DEBUG] Item #1 XML len: 1401
+[DEBUG]   Title: EDDIE SEAGLE: Houseplants offer adaptive gardening...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiwwFBVV95c...
+[DEBUG]   Date: Wed, 04 Feb 2026 12:31:47 GMT
+[DEBUG] cleanText input length: 105
+[DEBUG] cleanText preview: EDDIE SEAGLE: Houseplants offer adaptive gardening pleasure for the rest of your
+[DEBUG] cleanText output length: 85
+[DEBUG] cleanText result: EDDIE SEAGLE: Houseplants offer adaptive gardening pleasure for the rest of your life
+[DEBUG]   Cleaned Title: EDDIE SEAGLE: Houseplants offer adaptive gardening...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiwwFBVV95cUxNZ3RTR1o4Tks2SUlZeG1id2hmaVdNd2Jpa2dTbXNvcFdqT3FwMHozaHhTajh1Q2pvTUtwMHlxNHlibVc5Y0JZV2xqaEFqbkpuS3NIenZfcG9EZGtrMnpDYnVqSUE1TEFGbE1rTnQtVEpkU3l1VU4yVUtGenBoTmNUcTE0YVlEYXpldW9FRWtuRjgzbFM1RENFbmZSUUdmdVpQVUdURVhVNU5QeS0zN2VXeEpIWjE0LUIycDd3dVU3YmRaQk0?oc=5
+[DEBUG] isValidStory checking: EDDIE SEAGLE: Houseplants offer adaptive gardening pleasure 
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 1
+[DEBUG] Item #2 XML len: 954
+[DEBUG]   Title: Read recent and archived obituaries and memorial n...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiUkFVX3lxT...
+[DEBUG]   Date: Tue, 28 May 2019 08:50:26 GMT
+[DEBUG] cleanText input length: 104
+[DEBUG] cleanText preview: Read recent and archived obituaries and memorial notices from The Moultrie Obser
+[DEBUG] cleanText output length: 84
+[DEBUG] cleanText result: Read recent and archived obituaries and memorial notices from The Moultrie Observer.
+[DEBUG]   Cleaned Title: Read recent and archived obituaries and memorial n...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiUkFVX3lxTE02YUwzaDI4NllmRWkzaUw5a0t6QzFBR0hEYzdaQWNIcnRkZkw5OUVCdVY0Y05DaTh3NFFLbHFJLUk2R0NETXM1YkdjSk1nM0IzV0E?oc=5
+[DEBUG] isValidStory checking: Read recent and archived obituaries and memorial notices fro
+[DEBUG] isValidStory: ACCEPTED
+[WARN] Year out of range
+[DEBUG]   REJECTED: Invalid date
+[DEBUG] Item #3 XML len: 795
+[DEBUG]   Title: Contact Us - Moultrie Observer
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiUkFVX3lxT...
+[DEBUG]   Date: Tue, 29 Oct 2024 09:17:06 GMT
+[DEBUG] cleanText input length: 30
+[DEBUG] cleanText preview: Contact Us - Moultrie Observer
+[DEBUG] cleanText output length: 30
+[DEBUG] cleanText result: Contact Us - Moultrie Observer
+[DEBUG]   Cleaned Title: Contact Us - Moultrie Observer
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiUkFVX3lxTFAteG5CZ05VdW9YdWVzVmswYmkySkd4M0tvYy1nVmppWXp4ZlVzRUdLay0wREJRWW00eE9Nd3JDM0x3WFRNc2p3SEJnTTJIczRYZFE?oc=5
+[DEBUG] isValidStory checking: Contact Us - Moultrie Observer
+[DEBUG] isValidStory: REJECTED - CONTACT US
+[DEBUG]   REJECTED: Failed validation filter
+[DEBUG] Item #4 XML len: 749
+[DEBUG]   Title: Moultrie Observer - Moultrie Observer
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiQ0FVX3lxT...
+[DEBUG]   Date: Wed, 27 Apr 2016 13:34:32 GMT
+[DEBUG] cleanText input length: 37
+[DEBUG] cleanText preview: Moultrie Observer - Moultrie Observer
+[DEBUG] cleanText output length: 17
+[DEBUG] cleanText result: Moultrie Observer
+[DEBUG]   Cleaned Title: Moultrie Observer
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiQ0FVX3lxTE00d0ZhekcxaktIMVhJd01pRXpkYkhlRHo3QkdzWXJRYnB1ZWJkY1BoRlJuNTB2T1BESmtzRmFJcW9OUDg?oc=5
+[DEBUG] isValidStory checking: Moultrie Observer
+[DEBUG] isValidStory: REJECTED - too short
+[DEBUG]   REJECTED: Failed validation filter
+[DEBUG] Item #5 XML len: 839
+[DEBUG]   Title: About Us - Moultrie Observer
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiXkFVX3lxT...
+[DEBUG]   Date: Wed, 23 Oct 2024 11:33:51 GMT
+[DEBUG] cleanText input length: 28
+[DEBUG] cleanText preview: About Us - Moultrie Observer
+[DEBUG] cleanText output length: 28
+[DEBUG] cleanText result: About Us - Moultrie Observer
+[DEBUG]   Cleaned Title: About Us - Moultrie Observer
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiXkFVX3lxTFBxNHd5Tmh5X2JELTlyUDlOaV9YYzR6bFJKS3MweDAyYWVtc2FzRUZvT3QtMGE3cG5kUlFpTklTRC1femZJTVpJUjQzLU5EYVdyUy1VY1VvWC1lUzZLNFE?oc=5
+[DEBUG] isValidStory checking: About Us - Moultrie Observer
+[DEBUG] isValidStory: REJECTED - ABOUT US
+[DEBUG]   REJECTED: Failed validation filter
+[DEBUG] Item #6 XML len: 839
+[DEBUG]   Title: latest news Archives - Moultrie Observer
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiWEFVX3lxT...
+[DEBUG]   Date: Mon, 06 Jan 2025 16:27:13 GMT
+[DEBUG] cleanText input length: 40
+[DEBUG] cleanText preview: latest news Archives - Moultrie Observer
+[DEBUG] cleanText output length: 20
+[DEBUG] cleanText result: latest news Archives
+[DEBUG]   Cleaned Title: latest news Archives
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiWEFVX3lxTE16Nk1fRVE0SUROamszQm92ZGVMbHo3UjdPQk5FWHJIY2NnSnF0YmwwTDN3UmplME1fTk1IcHV5TUtPM2MxU3c5b19YMkVxb212ZjM2SkpXc2Q?oc=5
+[DEBUG] isValidStory checking: latest news Archives
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 2
+[DEBUG] Item #7 XML len: 1217
+[DEBUG]   Title: Colquitt County baseball team to open Monday again...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiogFBVV95c...
+[DEBUG]   Date: Mon, 09 Feb 2026 01:15:47 GMT
+[DEBUG] cleanText input length: 79
+[DEBUG] cleanText preview: Colquitt County baseball team to open Monday against Coffee - Moultrie Observer
+[DEBUG] cleanText output length: 59
+[DEBUG] cleanText result: Colquitt County baseball team to open Monday against Coffee
+[DEBUG]   Cleaned Title: Colquitt County baseball team to open Monday again...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiogFBVV95cUxQNUlUYklGejZrcVIxZXEzQUVuNGhDVE1HRWdoMGw4WDE3M2NrYWRpQ1JoTV84aFFQZGY0dTBMQUEwR0Y1X281UEswS25fRkpnQ0RHQ29PZlIxelhFRkZIeFM3Z2FJTDlGbXdCNGVRSVlXWVNqLTdTTVVsLTRnd09uVkNSMnZCR0djY0hHYW9NNURkbXU0SnNCMVlibjIyWmYtNHc?oc=5
+[DEBUG] isValidStory checking: Colquitt County baseball team to open Monday against Coffee
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 3
+[DEBUG] Item #8 XML len: 1114
+[DEBUG]   Title: Colquitt softball team defeats Lee County 5-2 - Mo...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMijwFBVV95c...
+[DEBUG]   Date: Fri, 10 Oct 2025 07:00:00 GMT
+[DEBUG] cleanText input length: 65
+[DEBUG] cleanText preview: Colquitt softball team defeats Lee County 5-2 - Moultrie Observer
+[DEBUG] cleanText output length: 45
+[DEBUG] cleanText result: Colquitt softball team defeats Lee County 5-2
+[DEBUG]   Cleaned Title: Colquitt softball team defeats Lee County 5-2
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMijwFBVV95cUxQM29RR2hyWE5oSktiaEFpSjl1M241c3djbEp1eXdrLThlRklTQ2ZOcUVhV2d5X1Jvb1FrX0Zwc0Q3ODFQS0xiY2FPandYYUFHdi1hM0J2ZkVkZ2R1R1MxMnIzeHhKYXVjdUFWVU9YVVlNd25IY3hrMWFIMVgxUHVSQkhWdGtaMllJOHA3ZFk0RQ?oc=5
+[DEBUG] isValidStory checking: Colquitt softball team defeats Lee County 5-2
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 4
+[DEBUG] Item #9 XML len: 1156
+[DEBUG]   Title: Overcrowding constant issue at local animal shelte...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMilwFBVV95c...
+[DEBUG]   Date: Mon, 04 Aug 2025 07:00:00 GMT
+[DEBUG] cleanText input length: 71
+[DEBUG] cleanText preview: Overcrowding constant issue at local animal shelter - Moultrie Observer
+[DEBUG] cleanText output length: 51
+[DEBUG] cleanText result: Overcrowding constant issue at local animal shelter
+[DEBUG]   Cleaned Title: Overcrowding constant issue at local animal shelte...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMilwFBVV95cUxNd2lSOVFtM0p0ZWt3THcxbEIwN09obENHSVpHcjBLcDR0OHRqcTlWMXpCU1RGdGdsMHc1V2I0SHotYzZUNW83dFlxdlJvU3dqOU04NFRlS1hMSUk2MXFiVlpta3V5TDFrczR6Vk42akRBQk1sUG81ZHFNWU9MZVJWZlVoU2puQXpiNU5ZUHZCUUp6bmtTLVlv?oc=5
+[DEBUG] isValidStory checking: Overcrowding constant issue at local animal shelter
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 5
+[DEBUG] Item #10 XML len: 1074
+[DEBUG]   Title: Local educators named 2025 Hidden Heroes - Moultri...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiiAFBVV95c...
+[DEBUG]   Date: Mon, 01 Dec 2025 08:00:00 GMT
+[DEBUG] cleanText input length: 60
+[DEBUG] cleanText preview: Local educators named 2025 Hidden Heroes - Moultrie Observer
+[DEBUG] cleanText output length: 40
+[DEBUG] cleanText result: Local educators named 2025 Hidden Heroes
+[DEBUG]   Cleaned Title: Local educators named 2025 Hidden Heroes
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiiAFBVV95cUxOSjFMOWtqd1VkZnl3d05oUkdWWFBDeDJveDVlOVhBOXMwV21mYUpuLThvTXc0M0pyM2xWRjJBeFNyWllGQ1NvaVFITEdua3R1WEpoVXdIeEJ6aTBWOWNQcWZSMF8wUUVKWVo1dF9qcTR4M0Z3NE84T0Q0R3BDNHBCc1pveW5CY0ZK?oc=5
+[DEBUG] isValidStory checking: Local educators named 2025 Hidden Heroes
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 6
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 10
+[NewsCore] Stories added: 6
+[NewsCore] Total pool size now: 18
+[DEBUG] Final free heap: 160544
+[DEBUG] Source stats - fetched: 10, accepted: 6, duplicates: 0, parse errors: 4
+========================================
+
+
+========================================
+[NewsCore] Fetching: TALLY REPORTS
+[NewsCore] Source URL: https://tallahasseereports.com/feed/
+[NewsCore] Is WordPress: Yes
+[DEBUG] Current pool size: 18
+[DEBUG] Free heap: 213176
+[DEBUG] HTTP Code: 200
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #1 XML len: 4000
+[DEBUG]   Title: Bill to designate domestic terrorist organizations...
+[DEBUG]   Link: https://tallahasseereports.com/2026/02/10/bill-to-...
+[DEBUG]   Date: Tue, 10 Feb 2026 20:54:08 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 369
+[DEBUG] cleanText preview: By Mitch Perry, The Florida Phoenix A proposal to empower the head of the Florid
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 114
+[DEBUG] cleanText result: By Mitch Perry, The Florida Phoenix A proposal to empower the head of the Florida Department of Law Enforcement...
+[DEBUG] cleanText input length: 76
+[DEBUG] cleanText preview: Bill to designate domestic terrorist organizations advances in Florida House
+[DEBUG] cleanText output length: 76
+[DEBUG] cleanText result: Bill to designate domestic terrorist organizations advances in Florida House
+[DEBUG]   Cleaned Title: Bill to designate domestic terrorist organizations...
+[DEBUG]   Cleaned URL: https://tallahasseereports.com/2026/02/10/bill-to-designate-domestic-terrorist-organizations-advances-in-florida-house/
+[DEBUG] isValidStory checking: Bill to designate domestic terrorist organizations advances 
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 1
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #2 XML len: 4000
+[DEBUG]   Title: Florida emergency agency ran up $405 million immig...
+[DEBUG]   Link: https://tallahasseereports.com/2026/02/10/florida-...
+[DEBUG]   Date: Tue, 10 Feb 2026 20:52:30 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 374
+[DEBUG] cleanText preview: By Liv Caputo, The Florida Phoenix Florida’s emergency managers spent more tha
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 107
+[DEBUG] cleanText result: By Liv Caputo, The Florida Phoenix Florida's emergency managers spent more than $405 million in taxpayer...
+[DEBUG] cleanText input length: 74
+[DEBUG] cleanText preview: Florida emergency agency ran up $405 million immigration tab in six months
+[DEBUG] cleanText output length: 74
+[DEBUG] cleanText result: Florida emergency agency ran up $405 million immigration tab in six months
+[DEBUG]   Cleaned Title: Florida emergency agency ran up $405 million immig...
+[DEBUG]   Cleaned URL: https://tallahasseereports.com/2026/02/10/florida-emergency-agency-ran-up-405-million-immigration-tab-in-six-months/
+[DEBUG] isValidStory checking: Florida emergency agency ran up $405 million immigration tab
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 2
+[DEBUG] Item #3 XML len: 2536
+[DEBUG]   Title: Bill Would Allow Coaches to Pay for Players Food
+[DEBUG]   Link: https://tallahasseereports.com/2026/02/10/bill-wou...
+[DEBUG]   Date: Tue, 10 Feb 2026 20:50:15 +0000
+[DEBUG] cleanText input length: 331
+[DEBUG] cleanText preview: By The News Service of Florida A proposal to allow high school sports coaches to
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 110
+[DEBUG] cleanText result: By The News Service of Florida A proposal to allow high school sports coaches to pay, out of their own pock...
+[DEBUG] cleanText input length: 181
+[DEBUG] cleanText preview: 
+By The News Service of Florida
+
+
+
+A proposal to allow high school sports coache
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 114
+[DEBUG] cleanText result: By The News Service of Florida A proposal to allow high school sports coaches to pay, out of their own pockets,...
+[DEBUG] cleanText input length: 48
+[DEBUG] cleanText preview: Bill Would Allow Coaches to Pay for Players Food
+[DEBUG] cleanText output length: 48
+[DEBUG] cleanText result: Bill Would Allow Coaches to Pay for Players Food
+[DEBUG]   Cleaned Title: Bill Would Allow Coaches to Pay for Players Food
+[DEBUG]   Cleaned URL: https://tallahasseereports.com/2026/02/10/bill-would-allow-coaches-to-pay-for-players-food/
+[DEBUG] isValidStory checking: Bill Would Allow Coaches to Pay for Players Food
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 3
+[DEBUG] Item #4 XML len: 3017
+[DEBUG]   Title: TSC Forensics Team Wins First Place
+[DEBUG]   Link: https://tallahasseereports.com/2026/02/10/tsc-fore...
+[DEBUG]   Date: Tue, 10 Feb 2026 19:58:09 +0000
+[DEBUG] cleanText input length: 373
+[DEBUG] cleanText preview: The Tallahassee State College (TSC) Speech and Debate team delivered a standout 
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 112
+[DEBUG] cleanText result: The Tallahassee State College (TSC) Speech and Debate team delivered a standout performance this past weekend...
+[DEBUG] cleanText input length: 177
+[DEBUG] cleanText preview: 
+The Tallahassee State College (TSC) Speech and Debate team delivered a standout
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 112
+[DEBUG] cleanText result: The Tallahassee State College (TSC) Speech and Debate team delivered a standout performance this past weekend...
+[DEBUG] cleanText input length: 35
+[DEBUG] cleanText preview: TSC Forensics Team Wins First Place
+[DEBUG] cleanText output length: 35
+[DEBUG] cleanText result: TSC Forensics Team Wins First Place
+[DEBUG]   Cleaned Title: TSC Forensics Team Wins First Place
+[DEBUG]   Cleaned URL: https://tallahasseereports.com/2026/02/10/tsc-forensics-team-wins-first-place/
+[DEBUG] isValidStory checking: TSC Forensics Team Wins First Place
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 4
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #5 XML len: 4000
+[DEBUG]   Title: College of Law Celebrates 60 Years of Service
+[DEBUG]   Link: https://tallahasseereports.com/2026/02/10/college-...
+[DEBUG]   Date: Tue, 10 Feb 2026 19:19:42 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 358
+[DEBUG] cleanText preview: By Suzi Baugh, FSU News Florida State University College of Law is celebrating 
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 110
+[DEBUG] cleanText result: By Suzi Baugh, FSU News Florida State University College of Law is celebrating 60 years since welcoming its...
+[DEBUG] cleanText input length: 45
+[DEBUG] cleanText preview: College of Law Celebrates 60 Years of Service
+[DEBUG] cleanText output length: 45
+[DEBUG] cleanText result: College of Law Celebrates 60 Years of Service
+[DEBUG]   Cleaned Title: College of Law Celebrates 60 Years of Service
+[DEBUG]   Cleaned URL: https://tallahasseereports.com/2026/02/10/college-of-law-celebrates-60-years-of-service/
+[DEBUG] isValidStory checking: College of Law Celebrates 60 Years of Service
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 5
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #6 XML len: 4000
+[DEBUG]   Title: TMH Named Among 50 Top Cardiovascular Hospitals® ...
+[DEBUG]   Link: https://tallahasseereports.com/2026/02/10/tmh-name...
+[DEBUG]   Date: Tue, 10 Feb 2026 19:04:05 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 441
+[DEBUG] cleanText preview: Tallahassee Memorial HealthCare (TMH) has been named as a top-performing hospita
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 112
+[DEBUG] cleanText result: Tallahassee Memorial HealthCare (TMH) has been named as a top-performing hospital in the United States in the...
+[DEBUG] cleanText input length: 63
+[DEBUG] cleanText preview: TMH Named Among 50 Top Cardiovascular Hospitals® in the Nation
+[DEBUG] cleanText output length: 61
+[DEBUG] cleanText result: TMH Named Among 50 Top Cardiovascular Hospitals in the Nation
+[DEBUG]   Cleaned Title: TMH Named Among 50 Top Cardiovascular Hospitals in...
+[DEBUG]   Cleaned URL: https://tallahasseereports.com/2026/02/10/tmh-named-among-50-top-cardiovascular-hospitals-in-the-nation/
+[DEBUG] isValidStory checking: TMH Named Among 50 Top Cardiovascular Hospitals in the Natio
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 6
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 6
+[NewsCore] Stories added: 6
+[NewsCore] Total pool size now: 24
+[DEBUG] Final free heap: 159908
+[DEBUG] Source stats - fetched: 6, accepted: 6, duplicates: 0, parse errors: 0
+========================================
+
+
+========================================
+[NewsCore] Fetching: BAINBRIDGE POST
+[NewsCore] Source URL: https://thepostsearchlight.com/feed/
+[NewsCore] Is WordPress: Yes
+[DEBUG] Current pool size: 24
+[DEBUG] Free heap: 211956
+[DEBUG] HTTP Code: 200
+[DEBUG] Item #1 XML len: 3848
+[DEBUG]   Title: Louie Dale Rackley, Sr.
+[DEBUG]   Link: https://thepostsearchlight.com/2026/02/10/louie-da...
+[DEBUG]   Date: Tue, 10 Feb 2026 21:48:53 +0000
+[DEBUG] cleanText input length: 179
+[DEBUG] cleanText preview: Mr. Louie Dale Rackley, Sr., age 86, passed away Saturday, Feb. 7, 2026, in Elyr
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 109
+[DEBUG] cleanText result: Mr. Louie Dale Rackley, Sr., age 86, passed away Saturday, Feb. 7, 2026, in Elyria, Ohio. Services for Mr....
+[DEBUG] cleanText input length: 0
+[DEBUG] cleanText preview: 
+[DEBUG] cleanText output length: 0
+[DEBUG] cleanText result: 
+[DEBUG] cleanText input length: 23
+[DEBUG] cleanText preview: Louie Dale Rackley, Sr.
+[DEBUG] cleanText output length: 23
+[DEBUG] cleanText result: Louie Dale Rackley, Sr.
+[DEBUG]   Cleaned Title: Louie Dale Rackley, Sr.
+[DEBUG]   Cleaned URL: https://thepostsearchlight.com/2026/02/10/louie-dale-rackley-sr/
+[DEBUG] isValidStory checking: Louie Dale Rackley, Sr.
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 1
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #2 XML len: 4000
+[DEBUG]   Title: Discs fly at Reckoning on the River tournament
+[DEBUG]   Link: https://thepostsearchlight.com/2026/02/10/discs-fl...
+[DEBUG]   Date: Tue, 10 Feb 2026 20:39:27 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 211
+[DEBUG] cleanText preview: The Bainbridge Oaks Disc Golf Course hosted 118 players for the second Reckoning
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 112
+[DEBUG] cleanText result: The Bainbridge Oaks Disc Golf Course hosted 118 players for the second Reckoning on the River tournament last...
+[DEBUG] cleanText input length: 46
+[DEBUG] cleanText preview: Discs fly at Reckoning on the River tournament
+[DEBUG] cleanText output length: 46
+[DEBUG] cleanText result: Discs fly at Reckoning on the River tournament
+[DEBUG]   Cleaned Title: Discs fly at Reckoning on the River tournament
+[DEBUG]   Cleaned URL: https://thepostsearchlight.com/2026/02/10/discs-fly-at-reckoning-on-the-river-tournament/
+[DEBUG] isValidStory checking: Discs fly at Reckoning on the River tournament
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 2
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #3 XML len: 4000
+[DEBUG]   Title: State trooper among two airlifted following Decatu...
+[DEBUG]   Link: https://thepostsearchlight.com/2026/02/10/state-tr...
+[DEBUG]   Date: Tue, 10 Feb 2026 20:22:20 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 231
+[DEBUG] cleanText preview: A Georgia State Patrol trooper and another individual were life‑flighted Monda
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 112
+[DEBUG] cleanText result: A Georgia State Patrol trooper and another individual were life flighted Monday afternoon following a vehicle...
+[DEBUG] cleanText input length: 68
+[DEBUG] cleanText preview: State trooper among two airlifted following Decatur County collision
+[DEBUG] cleanText output length: 68
+[DEBUG] cleanText result: State trooper among two airlifted following Decatur County collision
+[DEBUG]   Cleaned Title: State trooper among two airlifted following Decatu...
+[DEBUG]   Cleaned URL: https://thepostsearchlight.com/2026/02/10/state-trooper-among-two-airlifted-following-decatur-county-collision/
+[DEBUG] isValidStory checking: State trooper among two airlifted following Decatur County c
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 3
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #4 XML len: 4000
+[DEBUG]   Title: Artists, businesses shine at sixth annual Jazz and...
+[DEBUG]   Link: https://thepostsearchlight.com/2026/02/10/artists-...
+[DEBUG]   Date: Tue, 10 Feb 2026 20:12:29 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 198
+[DEBUG] cleanText preview: Bainbridge drew in hundreds of people Saturday for the sixth annual Jazz and Blu
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 112
+[DEBUG] cleanText result: Bainbridge drew in hundreds of people Saturday for the sixth annual Jazz and Blues festival, a celebration of...
+[DEBUG] cleanText input length: 65
+[DEBUG] cleanText preview: Artists, businesses shine at sixth annual Jazz and Blues Festival
+[DEBUG] cleanText output length: 65
+[DEBUG] cleanText result: Artists, businesses shine at sixth annual Jazz and Blues Festival
+[DEBUG]   Cleaned Title: Artists, businesses shine at sixth annual Jazz and...
+[DEBUG]   Cleaned URL: https://thepostsearchlight.com/2026/02/10/artists-businesses-shine-at-sixth-annual-jazz-and-blues-festival/
+[DEBUG] isValidStory checking: Artists, businesses shine at sixth annual Jazz and Blues Fes
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 4
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #5 XML len: 4000
+[DEBUG]   Title: Brinson to use SPLOST funds to target infrastructu...
+[DEBUG]   Link: https://thepostsearchlight.com/2026/02/10/brinson-...
+[DEBUG]   Date: Tue, 10 Feb 2026 19:56:02 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 206
+[DEBUG] cleanText preview: The Town of Brinson expects to receive $310,800 should Decatur County voters ren
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 113
+[DEBUG] cleanText result: The Town of Brinson expects to receive $310,800 should Decatur County voters renew SPLOST on May 19, officials...
+[DEBUG] cleanText input length: 58
+[DEBUG] cleanText preview: Brinson to use SPLOST funds to target infrastructure needs
+[DEBUG] cleanText output length: 58
+[DEBUG] cleanText result: Brinson to use SPLOST funds to target infrastructure needs
+[DEBUG]   Cleaned Title: Brinson to use SPLOST funds to target infrastructu...
+[DEBUG]   Cleaned URL: https://thepostsearchlight.com/2026/02/10/brinson-to-use-splost-funds-to-target-infrastructure-needs/
+[DEBUG] isValidStory checking: Brinson to use SPLOST funds to target infrastructure needs
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 5
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #6 XML len: 4000
+[DEBUG]   Title: Bearcats, Lady Cats celebrated at Senior Night
+[DEBUG]   Link: https://thepostsearchlight.com/2026/02/10/bearcats...
+[DEBUG]   Date: Tue, 10 Feb 2026 19:52:58 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 217
+[DEBUG] cleanText preview: Bainbridge High School honored its 14 winter sports seniors Saturday night with 
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 111
+[DEBUG] cleanText result: Bainbridge High School honored its 14 winter sports seniors Saturday night with a mid-court ceremony between...
+[DEBUG] cleanText input length: 46
+[DEBUG] cleanText preview: Bearcats, Lady Cats celebrated at Senior Night
+[DEBUG] cleanText output length: 46
+[DEBUG] cleanText result: Bearcats, Lady Cats celebrated at Senior Night
+[DEBUG]   Cleaned Title: Bearcats, Lady Cats celebrated at Senior Night
+[DEBUG]   Cleaned URL: https://thepostsearchlight.com/2026/02/10/bearcats-lady-cats-celebrated-at-senior-night/
+[DEBUG] isValidStory checking: Bearcats, Lady Cats celebrated at Senior Night
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 6
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 6
+[NewsCore] Stories added: 6
+[NewsCore] Total pool size now: 30
+[DEBUG] Final free heap: 162212
+[DEBUG] Source stats - fetched: 6, accepted: 6, duplicates: 0, parse errors: 0
+========================================
+
+
+========================================
+[NewsCore] Fetching: WAKULLA SUN
+[NewsCore] Source URL: https://thewakullasun.com/feed/
+[NewsCore] Is WordPress: Yes
+[DEBUG] Current pool size: 30
+[DEBUG] Free heap: 210764
+[DEBUG] HTTP Code: 200
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #1 XML len: 4000
+[DEBUG]   Title: Sopchoppy Opry ends its run
+[DEBUG]   Link: https://thewakullasun.com/2026/02/sopchoppy-opry-e...
+[DEBUG]   Date: Wed, 04 Feb 2026 19:55:01 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 276
+[DEBUG] cleanText preview: After 25 years, the Opry will no longer have regular shows Story ByLINDA ANN McD
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 113
+[DEBUG] cleanText result: After 25 years, the Opry will no longer have regular shows Story ByLINDA ANN McDONALDPhotos byGERALD BROWN The...
+[DEBUG] cleanText input length: 27
+[DEBUG] cleanText preview: Sopchoppy Opry ends its run
+[DEBUG] cleanText output length: 27
+[DEBUG] cleanText result: Sopchoppy Opry ends its run
+[DEBUG]   Cleaned Title: Sopchoppy Opry ends its run
+[DEBUG]   Cleaned URL: https://thewakullasun.com/2026/02/sopchoppy-opry-ends-its-run/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=sopchoppy-opry-ends-its-run
+[DEBUG] isValidStory checking: Sopchoppy Opry ends its run
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 1
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #2 XML len: 4000
+[DEBUG]   Title: Deputy agrees to deferred prosecution
+[DEBUG]   Link: https://thewakullasun.com/2026/02/deputy-agrees-to...
+[DEBUG]   Date: Wed, 04 Feb 2026 19:50:47 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 286
+[DEBUG] cleanText preview: Deputy Don Newsome was charged with supplying information to then-commissioner M
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 102
+[DEBUG] cleanText result: Deputy Don Newsome was charged with supplying information to then-commissioner Mike Kemp By WILLIAM...
+[DEBUG] cleanText input length: 37
+[DEBUG] cleanText preview: Deputy agrees to deferred prosecution
+[DEBUG] cleanText output length: 37
+[DEBUG] cleanText result: Deputy agrees to deferred prosecution
+[DEBUG]   Cleaned Title: Deputy agrees to deferred prosecution
+[DEBUG]   Cleaned URL: https://thewakullasun.com/2026/02/deputy-agrees-to-deferred-prosecution/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=deputy-agrees-to-deferred-prosecution
+[DEBUG] isValidStory checking: Deputy agrees to deferred prosecution
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 2
+[DEBUG] Item #3 XML len: 3040
+[DEBUG]   Title: Empty Bowls held
+[DEBUG]   Link: https://thewakullasun.com/2026/02/empty-bowls-held...
+[DEBUG]   Date: Wed, 04 Feb 2026 19:40:41 +0000
+[DEBUG] cleanText input length: 208
+[DEBUG] cleanText preview: An Empty Bowls event was held on Thursday at Wakulla High School to raise money 
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 108
+[DEBUG] cleanText result: An Empty Bowls event was held on Thursday at Wakulla High School to raise money for Wakulla Giving Hands....
+[DEBUG] cleanText input length: 1
+[DEBUG] cleanText preview: 
+
+[DEBUG] cleanText output length: 0
+[DEBUG] cleanText result: 
+[DEBUG] cleanText input length: 16
+[DEBUG] cleanText preview: Empty Bowls held
+[DEBUG] cleanText output length: 16
+[DEBUG] cleanText result: Empty Bowls held
+[DEBUG]   Cleaned Title: Empty Bowls held
+[DEBUG]   Cleaned URL: https://thewakullasun.com/2026/02/empty-bowls-held/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=empty-bowls-held
+[DEBUG] isValidStory checking: Empty Bowls held
+[DEBUG] isValidStory: REJECTED - too short
+[DEBUG]   REJECTED: Failed validation filter
+[DEBUG] Item #4 XML len: 3607
+[DEBUG]   Title: Cold-stunned turtles treated at Gulf Specimen
+[DEBUG]   Link: https://thewakullasun.com/2026/02/cold-stunned-tur...
+[DEBUG]   Date: Wed, 04 Feb 2026 19:38:01 +0000
+[DEBUG] cleanText input length: 237
+[DEBUG] cleanText preview: By WILLIAM SNOWDENEditor Dozens of people were set up on Thursday to receive the
+[DEBUG] cleanText output length: 101
+[DEBUG] cleanText result: By WILLIAM SNOWDENEditor Dozens of people were set up on Thursday to receive the incoming sea turtles
+[DEBUG] cleanText input length: 1
+[DEBUG] cleanText preview: 
+
+[DEBUG] cleanText output length: 0
+[DEBUG] cleanText result: 
+[DEBUG] cleanText input length: 45
+[DEBUG] cleanText preview: Cold-stunned turtles treated at Gulf Specimen
+[DEBUG] cleanText output length: 45
+[DEBUG] cleanText result: Cold-stunned turtles treated at Gulf Specimen
+[DEBUG]   Cleaned Title: Cold-stunned turtles treated at Gulf Specimen
+[DEBUG]   Cleaned URL: https://thewakullasun.com/2026/02/cold-stunned-turtles-treated-at-gulf-specimen/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=cold-stunned-turtles-treated-at-gulf-specimen
+[DEBUG] isValidStory checking: Cold-stunned turtles treated at Gulf Specimen
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 3
+[DEBUG] Item #5 XML len: 2157
+[DEBUG]   Title: Candidates file for 2026 election
+[DEBUG]   Link: https://thewakullasun.com/2026/02/candidates-file-...
+[DEBUG]   Date: Wed, 04 Feb 2026 19:34:20 +0000
+[DEBUG] cleanText input length: 193
+[DEBUG] cleanText preview: Staff Report Several candidates have filed to run in the 2026 election, all of t
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 105
+[DEBUG] cleanText result: Staff Report Several candidates have filed to run in the 2026 election, all of them incumbents seeking...
+[DEBUG] cleanText input length: 160
+[DEBUG] cleanText preview: 
+Staff Report
+
+
+
+Several candidates have filed to run in the 2026 election, all 
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 105
+[DEBUG] cleanText result: Staff Report Several candidates have filed to run in the 2026 election, all of them incumbents seeking...
+[DEBUG] cleanText input length: 33
+[DEBUG] cleanText preview: Candidates file for 2026 election
+[DEBUG] cleanText output length: 33
+[DEBUG] cleanText result: Candidates file for 2026 election
+[DEBUG]   Cleaned Title: Candidates file for 2026 election
+[DEBUG]   Cleaned URL: https://thewakullasun.com/2026/02/candidates-file-for-2026-election/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=candidates-file-for-2026-election
+[DEBUG] isValidStory checking: Candidates file for 2026 election
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 4
+[WARN] Item truncated at 4000 bytes
+[DEBUG] Item #6 XML len: 4000
+[DEBUG]   Title: Sopchoppy man pleads guilty to federal charges of ...
+[DEBUG]   Link: https://thewakullasun.com/2026/02/sopchoppy-man-pl...
+[DEBUG]   Date: Wed, 04 Feb 2026 19:23:06 +0000
+[WARN] Malformed tag: </content:encoded>
+[DEBUG] cleanText input length: 280
+[DEBUG] cleanText preview: From U.S. Attorney’s Office Howard Neil Martin, 46, of Sopchoppy, pleaded guil
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 109
+[DEBUG] cleanText result: From U.S. Attorney's Office Howard Neil Martin, 46, of Sopchoppy, pleaded guilty in federal court to three...
+[DEBUG] cleanText input length: 86
+[DEBUG] cleanText preview: Sopchoppy man pleads guilty to federal charges of armed trafficking of methamphe
+[DEBUG] cleanText output length: 86
+[DEBUG] cleanText result: Sopchoppy man pleads guilty to federal charges of armed trafficking of methamphetamine
+[DEBUG]   Cleaned Title: Sopchoppy man pleads guilty to federal charges of ...
+[DEBUG]   Cleaned URL: https://thewakullasun.com/2026/02/sopchoppy-man-pleads-guilty-to-federal-charges-of-armed-trafficking-of-methamphetamine/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=sopchoppy-man-pleads-guilty-to-federal-charges-of-armed-trafficking-of-methamphetamine
+[DEBUG] isValidStory checking: Sopchoppy man pleads guilty to federal charges of armed traf
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 5
+[DEBUG] Item #7 XML len: 1424
+[DEBUG]   Title: Question of the week
+[DEBUG]   Link: https://thewakullasun.com/2026/02/question-of-the-...
+[DEBUG]   Date: Wed, 04 Feb 2026 19:08:44 +0000
+[DEBUG] cleanText input length: 0
+[DEBUG] cleanText preview: 
+[DEBUG] cleanText output length: 0
+[DEBUG] cleanText result: 
+[DEBUG] cleanText input length: 1
+[DEBUG] cleanText preview: 
+
+[DEBUG] cleanText output length: 0
+[DEBUG] cleanText result: 
+[DEBUG] cleanText input length: 20
+[DEBUG] cleanText preview: Question of the week
+[DEBUG] cleanText output length: 20
+[DEBUG] cleanText result: Question of the week
+[DEBUG]   Cleaned Title: Question of the week
+[DEBUG]   Cleaned URL: https://thewakullasun.com/2026/02/question-of-the-week-107/?utm_source=rss&#038;utm_medium=rss&#038;utm_campaign=question-of-the-week-107
+[DEBUG] isValidStory checking: Question of the week
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 6
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 7
+[NewsCore] Stories added: 6
+[NewsCore] Total pool size now: 36
+[DEBUG] Final free heap: 157424
+[DEBUG] Source stats - fetched: 7, accepted: 6, duplicates: 0, parse errors: 1
+========================================
+
+[DEBUG] Before age pruning: 36
+[DEBUG] After age pruning: 30
+[DEBUG] Stories in pool by source:
+[DEBUG]   Source 0 (VALDOSTA DAILY): 6
+[DEBUG]   Source 1 (THOMASVILLE T-E): 6
+[DEBUG]   Source 2 (MOULTRIE OBS): 6
+[DEBUG]   Source 3 (TALLY REPORTS): 6
+[DEBUG]   Source 4 (BAINBRIDGE POST): 6
+[NewsCore] Queue Reshuffled. Size: 30
+[DEBUG] Queue composition by source:
+[DEBUG]   Source 0 (VALDOSTA DAILY): 6
+[DEBUG]   Source 1 (THOMASVILLE T-E): 6
+[DEBUG]   Source 2 (MOULTRIE OBS): 6
+[DEBUG]   Source 3 (TALLY REPORTS): 6
+[DEBUG]   Source 4 (BAINBRIDGE POST): 6
+
+--- FINAL POOL STATE ---
+[NewsCore] Total Stories in Pool: 30
+[NewsCore] Playback Queue Size: 30
+[NewsCore] Free Heap: 210648
+
+[DEBUG] Stories in pool by source:
+[DEBUG]   Source 0 (VALDOSTA DAILY): 6
+[DEBUG]   Source 1 (THOMASVILLE T-E): 6
+[DEBUG]   Source 2 (MOULTRIE OBS): 6
+[DEBUG]   Source 3 (TALLY REPORTS): 6
+[DEBUG]   Source 4 (BAINBRIDGE POST): 6
+
+[DEBUG] Sample of recent stories (up to 5):
+[DEBUG]   VALDOSTA DAILY - Lowndes Co. Property Trans. Feb. 7
+[DEBUG]     Time: Sat 10:23 AM | URL: https://news.google.com/rss/articles/CBMif0FVX3lxTE56Q1gtcER
+[DEBUG]   VALDOSTA DAILY - Southern Regional Technical College celebrates third cohort of Street to Station Program
+[DEBUG]     Time: Mon 7:59 AM | URL: https://news.google.com/rss/articles/CBMiywFBVV95cUxONGZGbjF
+[DEBUG]   VALDOSTA DAILY - Lowndes High School's Dave brothers win Congressional App Challenge for fourth time, advance to national...
+[DEBUG]     Time: Sun 5:06 PM | URL: https://news.google.com/rss/articles/CBMi7gFBVV95cUxPU2RCMEx
+[DEBUG]   VALDOSTA DAILY - Education Briefs Jan. 31
+[DEBUG]     Time: Thu 3:56 PM | URL: https://news.google.com/rss/articles/CBMidEFVX3lxTE96c0pOLVN
+[DEBUG]   VALDOSTA DAILY - Girls on the Run spring season kicks off Feb. 9
+[DEBUG]     Time: Wed 9:28 AM | URL: https://news.google.com/rss/articles/CBMikwFBVV95cUxON2Zkdld
+
+==========================================
+[SUMMARY] BATCH SOURCE STATISTICS
+==========================================
+[SUMMARY] Source 0 - VALDOSTA DAILY
+  Fetched: 7 | Accepted: 6 | Duplicates: 0 | Parse Errors: 1 | Consecutive Fails: 0
+  Accept Rate: 85.7%
+[SUMMARY] Source 1 - THOMASVILLE T-E
+  Fetched: 10 | Accepted: 6 | Duplicates: 0 | Parse Errors: 4 | Consecutive Fails: 0
+  Accept Rate: 60.0%
+[SUMMARY] Source 2 - MOULTRIE OBS
+  Fetched: 10 | Accepted: 6 | Duplicates: 0 | Parse Errors: 4 | Consecutive Fails: 0
+  Accept Rate: 60.0%
+[SUMMARY] Source 3 - TALLY REPORTS
+  Fetched: 6 | Accepted: 6 | Duplicates: 0 | Parse Errors: 0 | Consecutive Fails: 0
+  Accept Rate: 100.0%
+[SUMMARY] Source 4 - BAINBRIDGE POST
+  Fetched: 6 | Accepted: 6 | Duplicates: 0 | Parse Errors: 0 | Consecutive Fails: 0
+  Accept Rate: 100.0%
+[SUMMARY] Source 5 - WAKULLA SUN
+  Fetched: 7 | Accepted: 6 | Duplicates: 0 | Parse Errors: 1 | Consecutive Fails: 0
+  Accept Rate: 85.7%
+------------------------------------------
+[SUMMARY] Batch Totals - Fetched: 46 | Accepted: 36 | Duplicates: 0 | Errors: 10
+[SUMMARY] Overall Accept Rate: 78.3%
+==========================================
+
+###  NEWS REFRESH CYCLE COMPLETE      ###
+##########################################
+
+
+[NewsCore] Queue Reshuffled. Size: 30
+[DEBUG] Queue composition by source:
+[DEBUG]   Source 0 (VALDOSTA DAILY): 6
+[DEBUG]   Source 1 (THOMASVILLE T-E): 6
+[DEBUG]   Source 2 (MOULTRIE OBS): 6
+[DEBUG]   Source 3 (TALLY REPORTS): 6
+[DEBUG]   Source 4 (BAINBRIDGE POST): 6
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 30
+[DEBUG] Selected story idx=4 from source 0 (VALDOSTA DAILY)
+[DEBUG] Headline: Girls on the Run spring season kicks off Feb. 9
+[DEBUG] getNextStoryIndex called. Forbidden sources: 0, | Queue size: 29
+[DEBUG] Skipping idx=3 (source 0 is forbidden)
+[DEBUG] Selected story idx=27 from source 4 (BAINBRIDGE POST)
+[DEBUG] Headline: Artists, businesses shine at sixth annual Jazz and Blues Fes
+[DEBUG] Returning 1 skipped cards to bottom of deck
+[DEBUG] getNextStoryIndex called. Forbidden sources: 0,4, | Queue size: 28
+[DEBUG] Selected story idx=13 from source 2 (MOULTRIE OBS)
+[DEBUG] Headline: latest news Archives
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 27
+[DEBUG] Selected story idx=1 from source 0 (VALDOSTA DAILY)
+[DEBUG] Headline: Southern Regional Technical College celebrates third cohort 
+[DEBUG] getNextStoryIndex called. Forbidden sources: 0, | Queue size: 26
+[DEBUG] Selected story idx=29 from source 4 (BAINBRIDGE POST)
+[DEBUG] Headline: Bearcats, Lady Cats celebrated at Senior Night
+[DEBUG] getNextStoryIndex called. Forbidden sources: 0,4, | Queue size: 25
+[DEBUG] Skipping idx=24 (source 4 is forbidden)
+[DEBUG] Selected story idx=14 from source 2 (MOULTRIE OBS)
+[DEBUG] Headline: Colquitt County baseball team to open Monday against Coffee
+[DEBUG] Returning 1 skipped cards to bottom of deck
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 24
+[DEBUG] Selected story idx=15 from source 2 (MOULTRIE OBS)
+[DEBUG] Headline: Colquitt softball team defeats Lee County 5-2
+[DEBUG] getNextStoryIndex called. Forbidden sources: 2, | Queue size: 23
+[DEBUG] Selected story idx=22 from source 3 (TALLY REPORTS)
+[DEBUG] Headline: College of Law Celebrates 60 Years of Service
+[DEBUG] getNextStoryIndex called. Forbidden sources: 2,3, | Queue size: 22
+[DEBUG] Selected story idx=10 from source 1 (THOMASVILLE T-E)
+[DEBUG] Headline: Agnes Carter celebrates 100 years
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 21
+[DEBUG] Selected story idx=28 from source 4 (BAINBRIDGE POST)
+[DEBUG] Headline: Brinson to use SPLOST funds to target infrastructure needs
+[DEBUG] getNextStoryIndex called. Forbidden sources: 4, | Queue size: 20
+[DEBUG] Selected story idx=2 from source 0 (VALDOSTA DAILY)
+[DEBUG] Headline: Lowndes High School's Dave brothers win Congressional App Ch
+[DEBUG] getNextStoryIndex called. Forbidden sources: 4,0, | Queue size: 19
+[DEBUG] Selected story idx=6 from source 1 (THOMASVILLE T-E)
+[DEBUG] Headline: Skeletal remains found outside Barnett's Creek linked to pos
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 18
+[DEBUG] Selected story idx=5 from source 0 (VALDOSTA DAILY)
+[DEBUG] Headline: Lowndes Co. Property Transactions Jan. 31
+[DEBUG] getNextStoryIndex called. Forbidden sources: 0, | Queue size: 17
+[DEBUG] Selected story idx=21 from source 3 (TALLY REPORTS)
+[DEBUG] Headline: TSC Forensics Team Wins First Place
+[DEBUG] getNextStoryIndex called. Forbidden sources: 0,3, | Queue size: 16
+[DEBUG] Selected story idx=9 from source 1 (THOMASVILLE T-E)
+[DEBUG] Headline: Madison Dickerson joins the Sound of the South at Troy Unive
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 15
+[DEBUG] Selected story idx=17 from source 2 (MOULTRIE OBS)
+[DEBUG] Headline: Local educators named 2025 Hidden Heroes
+[DEBUG] getNextStoryIndex called. Forbidden sources: 2, | Queue size: 14
+[DEBUG] Selected story idx=8 from source 1 (THOMASVILLE T-E)
+[DEBUG] Headline: Local man charged in Crisp Co. vehicular homicide crash
+[DEBUG] getNextStoryIndex called. Forbidden sources: 2,1, | Queue size: 13
+[DEBUG] Selected story idx=26 from source 4 (BAINBRIDGE POST)
+[DEBUG] Headline: State trooper among two airlifted following Decatur County c
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 12
+[DEBUG] Selected story idx=20 from source 3 (TALLY REPORTS)
+[DEBUG] Headline: Bill Would Allow Coaches to Pay for Players Food
+[DEBUG] getNextStoryIndex called. Forbidden sources: 3, | Queue size: 11
+[DEBUG] Skipping idx=23 (source 3 is forbidden)
+[DEBUG] Selected story idx=0 from source 0 (VALDOSTA DAILY)
+[DEBUG] Headline: Lowndes Co. Property Trans. Feb. 7
+[DEBUG] Returning 1 skipped cards to bottom of deck
+[DEBUG] getNextStoryIndex called. Forbidden sources: 3,0, | Queue size: 10
+[DEBUG] Selected story idx=25 from source 4 (BAINBRIDGE POST)
+[DEBUG] Headline: Discs fly at Reckoning on the River tournament
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 9
+[DEBUG] Selected story idx=19 from source 3 (TALLY REPORTS)
+[DEBUG] Headline: Florida emergency agency ran up $405 million immigration tab
+[DEBUG] getNextStoryIndex called. Forbidden sources: 3, | Queue size: 8
+[DEBUG] Selected story idx=12 from source 2 (MOULTRIE OBS)
+[DEBUG] Headline: EDDIE SEAGLE: Houseplants offer adaptive gardening pleasure 
+[DEBUG] getNextStoryIndex called. Forbidden sources: 3,2, | Queue size: 7
+[DEBUG] Skipping idx=16 (source 2 is forbidden)
+[DEBUG] Selected story idx=7 from source 1 (THOMASVILLE T-E)
+[DEBUG] Headline: Vehicle pursuit leads to felony charges
+[DEBUG] Returning 1 skipped cards to bottom of deck
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 6
+[DEBUG] Selected story idx=18 from source 3 (TALLY REPORTS)
+[DEBUG] Headline: Bill to designate domestic terrorist organizations advances 
+[DEBUG] getNextStoryIndex called. Forbidden sources: 3, | Queue size: 5
+[DEBUG] Selected story idx=11 from source 1 (THOMASVILLE T-E)
+[DEBUG] Headline: Property tax rates lowered for 12th year in a row
+[DEBUG] getNextStoryIndex called. Forbidden sources: 3,1, | Queue size: 4
+[DEBUG] Selected story idx=3 from source 0 (VALDOSTA DAILY)
+[DEBUG] Headline: Education Briefs Jan. 31
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 3
+[DEBUG] Selected story idx=24 from source 4 (BAINBRIDGE POST)
+[DEBUG] Headline: Louie Dale Rackley, Sr.
+[DEBUG] getNextStoryIndex called. Forbidden sources: 4, | Queue size: 2
+[DEBUG] Selected story idx=23 from source 3 (TALLY REPORTS)
+[DEBUG] Headline: TMH Named Among 50 Top Cardiovascular Hospitals in the Natio
+[DEBUG] getNextStoryIndex called. Forbidden sources: 4,3, | Queue size: 1
+[DEBUG] Selected story idx=16 from source 2 (MOULTRIE OBS)
+[DEBUG] Headline: Overcrowding constant issue at local animal shelter
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 0
+[DEBUG] Queue empty, reshuffling...
+[NewsCore] Queue Reshuffled. Size: 30
+[DEBUG] Queue composition by source:
+[DEBUG]   Source 0 (VALDOSTA DAILY): 6
+[DEBUG]   Source 1 (THOMASVILLE T-E): 6
+[DEBUG]   Source 2 (MOULTRIE OBS): 6
+[DEBUG]   Source 3 (TALLY REPORTS): 6
+[DEBUG]   Source 4 (BAINBRIDGE POST): 6
+[DEBUG] Selected story idx=29 from source 4 (BAINBRIDGE POST)
+[DEBUG] Headline: Bearcats, Lady Cats celebrated at Senior Night
+[DEBUG] getNextStoryIndex called. Forbidden sources: 4, | Queue size: 29
+[DEBUG] Selected story idx=5 from source 0 (VALDOSTA DAILY)
+[DEBUG] Headline: Lowndes Co. Property Transactions Jan. 31
+[DEBUG] getNextStoryIndex called. Forbidden sources: 4,0, | Queue size: 28
+[DEBUG] Selected story idx=7 from source 1 (THOMASVILLE T-E)
+[DEBUG] Headline: Vehicle pursuit leads to felony charges
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 27
+[DEBUG] Selected story idx=9 from source 1 (THOMASVILLE T-E)
+[DEBUG] Headline: Madison Dickerson joins the Sound of the South at Troy Unive
+[DEBUG] getNextStoryIndex called. Forbidden sources: 1, | Queue size: 26
+[DEBUG] Skipping idx=11 (source 1 is forbidden)
+[DEBUG] Selected story idx=21 from source 3 (TALLY REPORTS)
+[DEBUG] Headline: TSC Forensics Team Wins First Place
+[DEBUG] Returning 1 skipped cards to bottom of deck
+[DEBUG] getNextStoryIndex called. Forbidden sources: 1,3, | Queue size: 25
+[DEBUG] Skipping idx=23 (source 3 is forbidden)
+[DEBUG] Selected story idx=12 from source 2 (MOULTRIE OBS)
+[DEBUG] Headline: EDDIE SEAGLE: Houseplants offer adaptive gardening pleasure 
+[DEBUG] Returning 1 skipped cards to bottom of deck
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 24
+[DEBUG] Selected story idx=27 from source 4 (BAINBRIDGE POST)
+[DEBUG] Headline: Artists, businesses shine at sixth annual Jazz and Blues Fes
+[DEBUG] getNextStoryIndex called. Forbidden sources: 4, | Queue size: 23
+[DEBUG] Selected story idx=14 from source 2 (MOULTRIE OBS)
+[DEBUG] Headline: Colquitt County baseball team to open Monday against Coffee
+[DEBUG] getNextStoryIndex called. Forbidden sources: 4,2, | Queue size: 22
+[DEBUG] Selected story idx=1 from source 0 (VALDOSTA DAILY)
+[DEBUG] Headline: Southern Regional Technical College celebrates third cohort 
+
+
+##########################################
+###  NEWS REFRESH CYCLE STARTING      ###
+##########################################
+[NewsCore] Batch Index: 1
+[NewsCore] Batch Range: Sources 6 - 11
+[DEBUG] Pre-fetch pool size: 30
+[DEBUG] Pre-fetch free heap: 210680
+[DEBUG] WiFi status: Connected
+[DEBUG] WiFi RSSI: -42
+
+========================================
+[NewsCore] Fetching: GREENE PUB
+[NewsCore] Source URL: https://www.greenepublishing.com/feed/
+[NewsCore] Is WordPress: Yes
+[DEBUG] Current pool size: 30
+[DEBUG] Free heap: 210680
+[DEBUG] HTTP Code: 200
+[DEBUG] Item #1 XML len: 760
+[DEBUG]   Title: Dual Enrolled student spotlight of the month – C...
+[DEBUG]   Link: https://www.greenepublishing.com/dual-enrolled-stu...
+[DEBUG]   Date: Tue, 10 Feb 2026 21:49:12 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 218
+[DEBUG] cleanText preview:  North Florida College Contributor North Florida College (NFC) offers a Dual 
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 109
+[DEBUG] cleanText result: North Florida College Contributor North Florida College (NFC) offers a Dual Enrollment program that allows...
+[DEBUG] cleanText input length: 63
+[DEBUG] cleanText preview: Dual Enrolled student spotlight of the month – Cooper Harrell
+[DEBUG] cleanText output length: 44
+[DEBUG] cleanText result: Dual Enrolled student spotlight of the month
+[DEBUG]   Cleaned Title: Dual Enrolled student spotlight of the month
+[DEBUG]   Cleaned URL: https://www.greenepublishing.com/dual-enrolled-student-spotlight-of-the-month-cooper-harrell/
+[DEBUG] isValidStory checking: Dual Enrolled student spotlight of the month
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 1
+[DEBUG] Item #2 XML len: 666
+[DEBUG]   Title: Made first in the waiting
+[DEBUG]   Link: https://www.greenepublishing.com/made-first-in-the...
+[DEBUG]   Date: Tue, 10 Feb 2026 21:48:03 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 186
+[DEBUG] cleanText preview: Rev. Cheryl Cruce Columnist As a sideline, my daughter decided to take up photog
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 114
+[DEBUG] cleanText result: Rev. Cheryl Cruce Columnist As a sideline, my daughter decided to take up photography to supplement her income....
+[DEBUG] cleanText input length: 25
+[DEBUG] cleanText preview: Made first in the waiting
+[DEBUG] cleanText output length: 25
+[DEBUG] cleanText result: Made first in the waiting
+[DEBUG]   Cleaned Title: Made first in the waiting
+[DEBUG]   Cleaned URL: https://www.greenepublishing.com/made-first-in-the-waiting/
+[DEBUG] isValidStory checking: Made first in the waiting
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 2
+[DEBUG] Item #3 XML len: 712
+[DEBUG]   Title: “Souper” Bowl Friday at MCCS
+[DEBUG]   Link: https://www.greenepublishing.com/souper-bowl-frida...
+[DEBUG]   Date: Tue, 10 Feb 2026 21:47:47 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 234
+[DEBUG] cleanText preview: Christy Bass Adams Contributor Madison County Central School (MCCS) hosted their
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 110
+[DEBUG] cleanText result: Christy Bass Adams Contributor Madison County Central School (MCCS) hosted their annual "Souper" Bowl lunch...
+[DEBUG] cleanText input length: 32
+[DEBUG] cleanText preview: “Souper” Bowl Friday at MCCS
+[DEBUG] cleanText output length: 28
+[DEBUG] cleanText result: "Souper" Bowl Friday at MCCS
+[DEBUG]   Cleaned Title: "Souper" Bowl Friday at MCCS
+[DEBUG]   Cleaned URL: https://www.greenepublishing.com/souper-bowl-friday-at-mccs/
+[DEBUG] isValidStory checking: "Souper" Bowl Friday at MCCS
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 3
+[DEBUG] Item #4 XML len: 833
+[DEBUG]   Title: Florida producers urged to report agricultural los...
+[DEBUG]   Link: https://www.greenepublishing.com/florida-producers...
+[DEBUG]   Date: Tue, 10 Feb 2026 21:35:56 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 236
+[DEBUG] cleanText preview: Hailey Waldo Reporter@greenepublishing.com Florida agricultural producers impact
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 111
+[DEBUG] cleanText result: Hailey Waldo Reporter@greenepublishing.com Florida agricultural producers impacted by the winter 2026 freeze...
+[DEBUG] cleanText input length: 84
+[DEBUG] cleanText preview: Florida producers urged to report agricultural losses from winter 2026 freeze ev
+[DEBUG] cleanText output length: 84
+[DEBUG] cleanText result: Florida producers urged to report agricultural losses from winter 2026 freeze events
+[DEBUG]   Cleaned Title: Florida producers urged to report agricultural los...
+[DEBUG]   Cleaned URL: https://www.greenepublishing.com/florida-producers-urged-to-report-agricultural-losses-from-winter-2026-freeze-events/
+[DEBUG] isValidStory checking: Florida producers urged to report agricultural losses from w
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 4
+[DEBUG] Item #5 XML len: 709
+[DEBUG]   Title: Speeding leads to drug bust
+[DEBUG]   Link: https://www.greenepublishing.com/speeding-leads-to...
+[DEBUG]   Date: Tue, 10 Feb 2026 16:33:55 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 232
+[DEBUG] cleanText preview: Rick Patrick rick@greenepublishing.com &#160; According to information provided 
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 104
+[DEBUG] cleanText result: Rick Patrick rick@greenepublishing.com &#160; According to information provided by the Madison Police...
+[DEBUG] cleanText input length: 27
+[DEBUG] cleanText preview: Speeding leads to drug bust
+[DEBUG] cleanText output length: 27
+[DEBUG] cleanText result: Speeding leads to drug bust
+[DEBUG]   Cleaned Title: Speeding leads to drug bust
+[DEBUG]   Cleaned URL: https://www.greenepublishing.com/speeding-leads-to-drug-bust/
+[DEBUG] isValidStory checking: Speeding leads to drug bust
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 5
+[DEBUG] Item #6 XML len: 688
+[DEBUG]   Title: Cervical cancer awareness urged
+[DEBUG]   Link: https://www.greenepublishing.com/cervical-cancer-a...
+[DEBUG]   Date: Tue, 10 Feb 2026 14:53:37 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 214
+[DEBUG] cleanText preview: Lisa Hayes Contributor Cervical cancer, cancer of the cervix, is the fourth most
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 106
+[DEBUG] cleanText result: Lisa Hayes Contributor Cervical cancer, cancer of the cervix, is the fourth most common cancer in women...
+[DEBUG] cleanText input length: 31
+[DEBUG] cleanText preview: Cervical cancer awareness urged
+[DEBUG] cleanText output length: 31
+[DEBUG] cleanText result: Cervical cancer awareness urged
+[DEBUG]   Cleaned Title: Cervical cancer awareness urged
+[DEBUG]   Cleaned URL: https://www.greenepublishing.com/cervical-cancer-awareness-urged/
+[DEBUG] isValidStory checking: Cervical cancer awareness urged
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 6
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 6
+[NewsCore] Stories added: 6
+[NewsCore] Total pool size now: 36
+[DEBUG] Final free heap: 158692
+[DEBUG] Source stats - fetched: 6, accepted: 6, duplicates: 0, parse errors: 0
+========================================
+
+
+========================================
+[NewsCore] Fetching: WFSU NEWS
+[NewsCore] Source URL: https://news.wfsu.org/wfsu-local-news/rss.xml
+[NewsCore] Is WordPress: Yes
+[DEBUG] Current pool size: 36
+[DEBUG] Free heap: 209680
+[DEBUG] HTTP Code: 200
+[DEBUG] Stream timeout in safeFind
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 0
+[NewsCore] Stories added: 0
+[NewsCore] Total pool size now: 36
+[DEBUG] Final free heap: 153552
+[DEBUG] Source stats - fetched: 0, accepted: 0, duplicates: 0, parse errors: 0
+========================================
+
+
+========================================
+[NewsCore] Fetching: SUWANNEE DEM
+[NewsCore] Source URL: https://news.google.com/rss/search?q=site:suwanneedemocrat.com
+[NewsCore] Is WordPress: No
+[DEBUG] Current pool size: 36
+[DEBUG] Free heap: 209676
+[DEBUG] HTTP Code: 200
+[DEBUG] Stream timeout in safeFind
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 0
+[NewsCore] Stories added: 0
+[NewsCore] Total pool size now: 36
+[DEBUG] Final free heap: 166512
+[DEBUG] Source stats - fetched: 0, accepted: 0, duplicates: 0, parse errors: 0
+========================================
+
+
+========================================
+[NewsCore] Fetching: HAVANA HERALD
+[NewsCore] Source URL: https://theherald.online/feed/
+[NewsCore] Is WordPress: Yes
+[DEBUG] Current pool size: 36
+[DEBUG] Free heap: 209292
+[DEBUG] HTTP Code: 200
+[DEBUG] Item #1 XML len: 725
+[DEBUG]   Title: Everything you need to know about the April munici...
+[DEBUG]   Link: https://theherald.online/everything-you-need-to-kn...
+[DEBUG]   Date: Thu, 05 Feb 2026 17:50:50 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 167
+[DEBUG] cleanText preview: How to vote, how to run, and who’s showed up. FABRIZIO GOWDYCorrespondent  Wi
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 111
+[DEBUG] cleanText result: How to vote, how to run, and who's showed up. FABRIZIO GOWDYCorrespondent With the annual municipal election...
+[DEBUG] cleanText input length: 63
+[DEBUG] cleanText preview: Everything you need to know about the April municipal elections
+[DEBUG] cleanText output length: 63
+[DEBUG] cleanText result: Everything you need to know about the April municipal elections
+[DEBUG]   Cleaned Title: Everything you need to know about the April munici...
+[DEBUG]   Cleaned URL: https://theherald.online/everything-you-need-to-know-about-the-april-municipal-elections/
+[DEBUG] isValidStory checking: Everything you need to know about the April municipal electi
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 1
+[DEBUG] Item #2 XML len: 734
+[DEBUG]   Title: Gadsden County Republican Executive Committee requ...
+[DEBUG]   Link: https://theherald.online/gadsden-county-republican...
+[DEBUG]   Date: Thu, 05 Feb 2026 17:47:47 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 206
+[DEBUG] cleanText preview: Erin HIllGadsden County News Service The Gadsden County Republican Executive Com
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 112
+[DEBUG] cleanText result: Erin HIllGadsden County News Service The Gadsden County Republican Executive Committee has formally requested...
+[DEBUG] cleanText input length: 93
+[DEBUG] cleanText preview: Gadsden County Republican Executive Committee requests state DOGE review of coun
+[DEBUG] cleanText output length: 93
+[DEBUG] cleanText result: Gadsden County Republican Executive Committee requests state DOGE review of county government
+[DEBUG]   Cleaned Title: Gadsden County Republican Executive Committee requ...
+[DEBUG]   Cleaned URL: https://theherald.online/gadsden-county-republican-executive-committee-requests-state-doge-review-of-county-government/
+[DEBUG] isValidStory checking: Gadsden County Republican Executive Committee requests state
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 2
+[DEBUG] Item #3 XML len: 672
+[DEBUG]   Title: Chipola College to celebrate homecoming 2026 and A...
+[DEBUG]   Link: https://theherald.online/chipola-college-to-celebr...
+[DEBUG]   Date: Thu, 05 Feb 2026 17:46:14 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 186
+[DEBUG] cleanText preview: Erin HillGadsden County News Service Chipola College will host Homecoming 2026 o
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 111
+[DEBUG] cleanText result: Erin HillGadsden County News Service Chipola College will host Homecoming 2026 on Saturday, February 7, with...
+[DEBUG] cleanText input length: 75
+[DEBUG] cleanText preview: Chipola College to celebrate homecoming 2026 and America’s 250th Birthday
+[DEBUG] cleanText output length: 73
+[DEBUG] cleanText result: Chipola College to celebrate homecoming 2026 and America's 250th Birthday
+[DEBUG]   Cleaned Title: Chipola College to celebrate homecoming 2026 and A...
+[DEBUG]   Cleaned URL: https://theherald.online/chipola-college-to-celebrate-homecoming-2026-and-americas-250th-birthday/
+[DEBUG] isValidStory checking: Chipola College to celebrate homecoming 2026 and America's 2
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 3
+[DEBUG] Item #4 XML len: 647
+[DEBUG]   Title: Juvenile arrested in Pilgrim’s Rest Missionary B...
+[DEBUG]   Link: https://theherald.online/juvenile-arrested-in-pilg...
+[DEBUG]   Date: Thu, 05 Feb 2026 17:44:26 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 177
+[DEBUG] cleanText preview: Erin Hill Gadsden County News ServiceA juvenile suspect has been arrested in con
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 109
+[DEBUG] cleanText result: Erin Hill Gadsden County News ServiceA juvenile suspect has been arrested in connection with the fire that...
+[DEBUG] cleanText input length: 68
+[DEBUG] cleanText preview: Juvenile arrested in Pilgrim’s Rest Missionary Baptist Church fire
+[DEBUG] cleanText output length: 66
+[DEBUG] cleanText result: Juvenile arrested in Pilgrim's Rest Missionary Baptist Church fire
+[DEBUG]   Cleaned Title: Juvenile arrested in Pilgrim's Rest Missionary Bap...
+[DEBUG]   Cleaned URL: https://theherald.online/juvenile-arrested-in-pilgrims-rest-missionary-baptist-church-fire/
+[DEBUG] isValidStory checking: Juvenile arrested in Pilgrim's Rest Missionary Baptist Churc
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 4
+[DEBUG] Item #5 XML len: 606
+[DEBUG]   Title: Code enforcement debate splits town council
+[DEBUG]   Link: https://theherald.online/code-enforcement-debate-s...
+[DEBUG]   Date: Thu, 05 Feb 2026 17:42:23 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 178
+[DEBUG] cleanText preview: Fabrizio GowdyGadsden County News Service Havana Town Council members disagreed 
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 106
+[DEBUG] cleanText result: Fabrizio GowdyGadsden County News Service Havana Town Council members disagreed over how to handle code...
+[DEBUG] cleanText input length: 43
+[DEBUG] cleanText preview: Code enforcement debate splits town council
+[DEBUG] cleanText output length: 43
+[DEBUG] cleanText result: Code enforcement debate splits town council
+[DEBUG]   Cleaned Title: Code enforcement debate splits town council
+[DEBUG]   Cleaned URL: https://theherald.online/code-enforcement-debate-splits-town-council/
+[DEBUG] isValidStory checking: Code enforcement debate splits town council
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 5
+[DEBUG] Item #6 XML len: 569
+[DEBUG]   Title: Gadsden County Extension Column
+[DEBUG]   Link: https://theherald.online/gadsden-county-extension-...
+[DEBUG]   Date: Thu, 05 Feb 2026 17:40:32 +0000
+[WARN] Missing tag: <content:encoded>
+[DEBUG] cleanText input length: 155
+[DEBUG] cleanText preview: From storage to service: How to prep irrigation and sprayers for spring As winte
+[DEBUG] cleanText cropped to max length
+[DEBUG] cleanText output length: 111
+[DEBUG] cleanText result: From storage to service: How to prep irrigation and sprayers for spring As winter comes to an end and spring...
+[DEBUG] cleanText input length: 31
+[DEBUG] cleanText preview: Gadsden County Extension Column
+[DEBUG] cleanText output length: 31
+[DEBUG] cleanText result: Gadsden County Extension Column
+[DEBUG]   Cleaned Title: Gadsden County Extension Column
+[DEBUG]   Cleaned URL: https://theherald.online/gadsden-county-extension-column-20/
+[DEBUG] isValidStory checking: Gadsden County Extension Column
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 6
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 6
+[NewsCore] Stories added: 6
+[NewsCore] Total pool size now: 42
+[DEBUG] Final free heap: 163380
+[DEBUG] Source stats - fetched: 6, accepted: 6, duplicates: 0, parse errors: 0
+========================================
+
+
+========================================
+[NewsCore] Fetching: WJHG NEWS 7
+[NewsCore] Source URL: https://news.google.com/rss/search?q=site:wjhg.com
+[NewsCore] Is WordPress: No
+[DEBUG] Current pool size: 42
+[DEBUG] Free heap: 208284
+[DEBUG] HTTP Code: 200
+[WARN] Item truncated at 1500 bytes
+[DEBUG] Item #1 XML len: 1500
+[DEBUG]   Title: Deadly I-10 crash in Walton County Sunday evening ...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMihgFBVV95c...
+[DEBUG]   Date: Mon, 09 Feb 2026 20:18:00 GMT
+[DEBUG] cleanText input length: 56
+[DEBUG] cleanText preview: Deadly I-10 crash in Walton County Sunday evening - WJHG
+[DEBUG] cleanText output length: 49
+[DEBUG] cleanText result: Deadly I-10 crash in Walton County Sunday evening
+[DEBUG]   Cleaned Title: Deadly I-10 crash in Walton County Sunday evening
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMihgFBVV95cUxQTDBaM1JTUTl0SWhYNFdoUjZJQk1zQ0NGSFdSUE9xY1NYWUM5QzdPem5SNHBsc0xMcXJOY2RZNVlNUUI3T0tUTUhuMWY5S21UNVl4Y0RDM0dZNC1weVBpWlYxZXpWQTFORnZlWHU4bTJlSU5tY1Jja3U4VHdYQU9jU2c5TktyZ9IBmgFBVV95cUxQWmpXRnVNTEZlbVRRWkNWbWZfTm5BSzZQMjRRY1BlU3pKSHU1azJtQVZRT3YxWEVEaEhoeEJsRFJ0Rm0ydER0cUoxVjBBMUtYNTBHVlpzbkJ5RzVZcWVGSXo2djRmQ0N1WElWT2k4ODNMMXlGNW5DdUFwMzJjbEVCNU1pSTNRdjhtU3l2SnFoT2RiT0YwVV9lQ1NR?oc=5
+[DEBUG] isValidStory checking: Deadly I-10 crash in Walton County Sunday evening
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 1
+[WARN] Item truncated at 1500 bytes
+[DEBUG] Item #2 XML len: 1500
+[DEBUG]   Title: St. Andrews Mardi Gras festival brings community t...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMikwFBVV95c...
+[DEBUG]   Date: Sat, 07 Feb 2026 02:57:00 GMT
+[DEBUG] cleanText input length: 64
+[DEBUG] cleanText preview: St. Andrews Mardi Gras festival brings community together - WJHG
+[DEBUG] cleanText output length: 57
+[DEBUG] cleanText result: St. Andrews Mardi Gras festival brings community together
+[DEBUG]   Cleaned Title: St. Andrews Mardi Gras festival brings community t...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMikwFBVV95cUxOR0tvUEZzdWg4OGVXS3ZpRmVyV3d0aDljTVkwUTNVdDI5YkFnc2ktU3RqMV9ucDdSdTlQTVdTUDZaNmhleEdDOXNibjV1SF9wMjFsaHdubDV2RkF2QXNjeGhWeTEzZzJhbDdWUHo3QXk0N1l2dERMZXhTSVlKT3pBNzVhVS11Mk4xNGJYbTNzLWtraVnSAacBQVVfeXFMT1dObnVDSjdOeEZFTEpPNXJJcnV5U0RGd0YyOTBTbHJsaWhYaS1POVY1S1ZPWUpiY1lDWG1VY2tpSWNVZzJUQmlQQW1NVXFDSTEzakRNYWVPbTMyTjFLMzJXM3NKaE9iMWNubXlfeGdURF9yMXBMbFRsLWxjT1NqbmpSRG5yTWRHQXpKR0tySUVUdkFrd1dHcVRxTU03Y0FpMVpQbTl2V00?oc=5
+[DEBUG] isValidStory checking: St. Andrews Mardi Gras festival brings community together
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 2
+[WARN] Item truncated at 1500 bytes
+[DEBUG] Item #3 XML len: 1500
+[DEBUG]   Title: Verdict reached in Waffle House parking lot shooti...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMikAFBVV95c...
+[DEBUG]   Date: Fri, 06 Feb 2026 22:18:00 GMT
+[DEBUG] cleanText input length: 64
+[DEBUG] cleanText preview: Verdict reached in Waffle House parking lot shooting case - WJHG
+[DEBUG] cleanText output length: 57
+[DEBUG] cleanText result: Verdict reached in Waffle House parking lot shooting case
+[DEBUG]   Cleaned Title: Verdict reached in Waffle House parking lot shooti...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMikAFBVV95cUxNcG5XZ2dfSDNXd3dHSy1zdWd3RUx2emp4Ym1PQmxYUEFPbGVtejFrWWt0a1gyMEhWNEVkSG9YN1NOMS1kcnJvZ3JxaDRBTXFKMmV6UUVqc1RSTUVBZTFoZ0lxOE5QTkhpWjliS2I2M28yWXZHTWZpRHlqbDBMTTdHeDlWQUhwN3VtZHdNVjBzTUvSAaQBQVVfeXFMTXEyZ1BFVkhvcjVhVWFOYUFuT2lKT1czZVMzQmIta0dkMHUyNm9fVkE5aVJfNm1VWHA1di00eXlaYTBBX0NlQjBFNFp3dXNZY2R1Wl9PODlfcHNPVVN3dDhPa0d3TVE5aWxJNWgyQjBkX1VMYVF5UVA0cGtOVGxWVnlaQU5aVEczb2JwM043RUlkMjNTa1B4MDFlQlcwMUY4TkprT04?oc=5
+[DEBUG] isValidStory checking: Verdict reached in Waffle House parking lot shooting case
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 3
+[WARN] Item truncated at 1500 bytes
+[DEBUG] Item #4 XML len: 1500
+[DEBUG]   Title: Water main break in Panama City causes road closur...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiiAFBVV95c...
+[DEBUG]   Date: Fri, 06 Feb 2026 02:54:00 GMT
+[DEBUG] cleanText input length: 58
+[DEBUG] cleanText preview: Water main break in Panama City causes road closure - WJHG
+[DEBUG] cleanText output length: 51
+[DEBUG] cleanText result: Water main break in Panama City causes road closure
+[DEBUG]   Cleaned Title: Water main break in Panama City causes road closur...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiiAFBVV95cUxPRHNpYVZiUUczNnVCQ3p3d1BpUkhHMGdUeFhDQXNTSE96T21nM2FySDQtaXNiVlhCYzZjdG1IQnJkQVNpYXIwQ1Z1eWdYQzl6b3FpUEQ2dGthV2lfd0U0cUl0cW45OEpndUN2MUF0N3d4LWV6NFpHRnNpY2hPSms2SXRvamxGSjJt0gGcAUFVX3lxTE1IRGoxak0wVUE4Wlc2NU14aE1vRF84dnV4d21fa3RQZEZoRjVQRDRxdlo5aEtibGJET1E5YVBBOHczd2laMXB1ZjBXT2Q1NUFRcnNaRDBxNVFUQkdaMkYyUTlQeF8xQkg1VjN1RC1lTmhLT29aR1VOeUREUVU5N2VrTGtYZnBqdWlReUF2dzdzRDdKSHFST0ZsZWVhZA?oc=5
+[DEBUG] isValidStory checking: Water main break in Panama City causes road closure
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 4
+[WARN] Item truncated at 1500 bytes
+[DEBUG] Item #5 XML len: 1500
+[DEBUG]   Title: One driver seriously injured in Navy Blvd. crash o...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMikAFBVV95c...
+[DEBUG]   Date: Thu, 05 Feb 2026 22:14:00 GMT
+[DEBUG] cleanText input length: 68
+[DEBUG] cleanText preview: One driver seriously injured in Navy Blvd. crash on Wednesday - WJHG
+[DEBUG] cleanText output length: 61
+[DEBUG] cleanText result: One driver seriously injured in Navy Blvd. crash on Wednesday
+[DEBUG]   Cleaned Title: One driver seriously injured in Navy Blvd. crash o...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMikAFBVV95cUxPeFgyZmRsRnlwS3FWcENhdG1pdHJfSGFCR0FpLW5zdU9SSlJRRzBxUmZjNG5OTEF5bDZkZ0pic2xwbDBaQVNzOGlEQlJsUFZ2eGs3Q2xUMjBiYkRldDhOYTJSTEdlMXc2RWdEV1dsSkRQb1p1eUN6ZlNkc2Eza1BxbHRLWWw1NHdmd1JJdnBvSi3SAaQBQVVfeXFMTXU2VzVzN1hWN1g3NTM5MjdkN1E2dkdmb0hRTkM1MFhuaGJfT1pjdzlJWmtQcjRKRFlvR05RLW43eTRIZ1hZOF9ra2U2Nm80ZDhuWk9sZnNwR19hdE1vaGxBd1ZPakJER2xDaC1sY0g1Wk14REhIeXFkSVFBblFxQUJzdFdEQ2Eya1FrSkNIVVd1S0ZBUjJuTmJ0YWFGdnk1Mk9HQjA?oc=5
+[DEBUG] isValidStory checking: One driver seriously injured in Navy Blvd. crash on Wednesda
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 5
+[WARN] Item truncated at 1500 bytes
+[DEBUG] Item #6 XML len: 1500
+[DEBUG]   Title: Traffic crash shuts down I-10 in Walton County - W...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiggFBVV95c...
+[DEBUG]   Date: Mon, 09 Feb 2026 03:27:00 GMT
+[DEBUG] cleanText input length: 53
+[DEBUG] cleanText preview: Traffic crash shuts down I-10 in Walton County - WJHG
+[DEBUG] cleanText output length: 46
+[DEBUG] cleanText result: Traffic crash shuts down I-10 in Walton County
+[DEBUG]   Cleaned Title: Traffic crash shuts down I-10 in Walton County
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiggFBVV95cUxQcHQ5R05wR0UyU21iV0d5QTVTbXhlMlo5WHBTWFdLTUJnY2FfTldKdmRXaTQtbFR6cGxfcW5iYUpmUFRDWF9ib2M2bVROTHByU18xRlFfV2g1RlVLYmJVMUFPaVNhb1VwWl9XT1M3Y3VydUZBaVJ4ZjRnUXRGQXpJUGxB0gGWAUFVX3lxTFBNTTA0Z0tYdlJDSUt3NTdRakJwV2FzbTd4ekZSVm9Gd3BrZlRJb1RqUjdnMVdTWXhLVm9SNlNfQnZnWnFaWXZMSkFULWFwaGxlM01PUWhEWXNnYkZjV19xSG80ZjBzaXh6a19TWVlMR3psM1BuV1ZXdUNlUWpCRnJBUXY3b0dsZkRwTmNuT0NoWnJfT2RJUQ?oc=5
+[DEBUG] isValidStory checking: Traffic crash shuts down I-10 in Walton County
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 6
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 6
+[NewsCore] Stories added: 6
+[NewsCore] Total pool size now: 48
+[DEBUG] Final free heap: 152316
+[DEBUG] Source stats - fetched: 6, accepted: 6, duplicates: 0, parse errors: 0
+========================================
+
+
+========================================
+[NewsCore] Fetching: CNN
+[NewsCore] Source URL: https://news.google.com/rss/search?q=site:cnn.com
+[NewsCore] Is WordPress: No
+[DEBUG] Current pool size: 48
+[DEBUG] Free heap: 204924
+[DEBUG] HTTP Code: 200
+[DEBUG] Item #1 XML len: 1039
+[DEBUG]   Title: Takeaways from a tense House hearing with Trump im...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMifkFVX3lxT...
+[DEBUG]   Date: Tue, 10 Feb 2026 20:41:10 GMT
+[DEBUG] cleanText input length: 75
+[DEBUG] cleanText preview: Takeaways from a tense House hearing with Trump immigration officials - CNN
+[DEBUG] cleanText output length: 69
+[DEBUG] cleanText result: Takeaways from a tense House hearing with Trump immigration officials
+[DEBUG]   Cleaned Title: Takeaways from a tense House hearing with Trump im...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMifkFVX3lxTE9jTnloZjA2R0hpU1Y4bzVSSDRvd1ROQlhvN3cxeFZkNnVXcTVwY09rcUZNZnhMMDBWTnlHU0NJWGNQZVJJRlF6NW9lc0ZsVTN3dFp3ZGtPc296WkxLU2RZcFNmVmVrZXMyakdzN3V5OXNuYldZeVVzNVZvTXZUZw?oc=5
+[DEBUG] isValidStory checking: Takeaways from a tense House hearing with Trump immigration 
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 1
+[DEBUG] Item #2 XML len: 1077
+[DEBUG]   Title: Watch the new surveillance videos from Nancy Guthr...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMiiwFBVV95c...
+[DEBUG]   Date: Tue, 10 Feb 2026 18:25:22 GMT
+[DEBUG] cleanText input length: 67
+[DEBUG] cleanText preview: Watch the new surveillance videos from Nancy Guthrie’s home - CNN
+[DEBUG] cleanText output length: 59
+[DEBUG] cleanText result: Watch the new surveillance videos from Nancy Guthrie's home
+[DEBUG]   Cleaned Title: Watch the new surveillance videos from Nancy Guthr...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMiiwFBVV95cUxOb3liV2xyeHhvUjk1MWlqamIxSXNfR1BEM0xPZG9yQVJYd2MwYkVkekkwUU15aVowRlVueXdZU1NOdzJJUTVmMHJTaC1CdnlrQW45QTc3UW42Tzk3T1k2NF9MMHFZcXl5MlNPVTQxTml1endQcmtUbmVtUmUwSVE3X3lpZW8xZEx1N0Uw?oc=5
+[DEBUG] isValidStory checking: Watch the new surveillance videos from Nancy Guthrie's home
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 2
+[DEBUG] Item #3 XML len: 1129
+[DEBUG]   Title: Lutnick confirms an island lunch with Epstein whil...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMigwFBVV95c...
+[DEBUG]   Date: Tue, 10 Feb 2026 18:06:05 GMT
+[DEBUG] cleanText input length: 108
+[DEBUG] cleanText preview: Lutnick confirms an island lunch with Epstein while insisting they ‘did not ha
+[DEBUG] cleanText output length: 97
+[DEBUG] cleanText result: Lutnick confirms an island lunch with Epstein while insisting they did not have any relationship'
+[DEBUG]   Cleaned Title: Lutnick confirms an island lunch with Epstein whil...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMigwFBVV95cUxPZmQyMHpudWJwNEpZTWJjc3NZcEdPaDBteUxiaXlJbmlaMU5fR3M5cTEtY1FLZDBsaXNJWFZZNEFMYnU4ak0taEo3d1c3V2xrb3d2VXhqUzJaOUhqdUxTMUUySHFBOGV3aWxMalMySURwQUlJTGdqM3dYaWRyU0tRbHBzZw?oc=5
+[DEBUG] isValidStory checking: Lutnick confirms an island lunch with Epstein while insistin
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 3
+[DEBUG] Item #4 XML len: 1025
+[DEBUG]   Title: Vance’s X account deletes post recognizing Armen...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMifkFVX3lxT...
+[DEBUG]   Date: Tue, 10 Feb 2026 17:28:02 GMT
+[DEBUG] cleanText input length: 68
+[DEBUG] cleanText preview: Vance’s X account deletes post recognizing Armenian genocide - CNN
+[DEBUG] cleanText output length: 60
+[DEBUG] cleanText result: Vance's X account deletes post recognizing Armenian genocide
+[DEBUG]   Cleaned Title: Vance's X account deletes post recognizing Armenia...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMifkFVX3lxTE5WcV9HNFNhdEVFaUhaR0xCc0l5b0lMSnV2MDJJbHE2dW5pa0JXcTQtT2tGdF9qNkhTUmpwSEN5LUhyVWE4enFWbUw3OXFNakNFS00tajNMaGZya3ItY0dXamVaeW10X2dEVHRLVkZsanpuNFdzWlp3TVhoZzBvUQ?oc=5
+[DEBUG] isValidStory checking: Vance's X account deletes post recognizing Armenian genocide
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 4
+[DEBUG] Item #5 XML len: 1026
+[DEBUG]   Title: Earth’s core may contain as much as 45 oceans���...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMic0FVX3lxT...
+[DEBUG]   Date: Tue, 10 Feb 2026 16:56:22 GMT
+[DEBUG] cleanText input length: 91
+[DEBUG] cleanText preview: Earth’s core may contain as much as 45 oceans’ worth of hydrogen, scientists
+[DEBUG] cleanText output length: 81
+[DEBUG] cleanText result: Earth's core may contain as much as 45 oceans' worth of hydrogen, scientists find
+[DEBUG]   Cleaned Title: Earth's core may contain as much as 45 oceans' wor...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMic0FVX3lxTE8taEFYR0otV2lLcWpCNXJWMzZ1ODVXRHJ4Wjk5Wnpfd0ozdVBKaWhBSmNnNHE4NmJVQmVLMGtwTmloNURPMTRvUFVXZzVMQ0VNX2xuSVdkTXQ0aVNJbnE2TjE0SUk0SU01TGdkdzRFQkdkMW8?oc=5
+[DEBUG] isValidStory checking: Earth's core may contain as much as 45 oceans' worth of hydr
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 5
+[DEBUG] Item #6 XML len: 1065
+[DEBUG]   Title: Paramount sweetens hostile bid to stop Netflix-War...
+[DEBUG]   Link: https://news.google.com/rss/articles/CBMihgFBVV95c...
+[DEBUG]   Date: Tue, 10 Feb 2026 16:02:18 GMT
+[DEBUG] cleanText input length: 70
+[DEBUG] cleanText preview: Paramount sweetens hostile bid to stop Netflix-Warner Bros. deal - CNN
+[DEBUG] cleanText output length: 64
+[DEBUG] cleanText result: Paramount sweetens hostile bid to stop Netflix-Warner Bros. deal
+[DEBUG]   Cleaned Title: Paramount sweetens hostile bid to stop Netflix-War...
+[DEBUG]   Cleaned URL: https://news.google.com/rss/articles/CBMihgFBVV95cUxQcS1ieDJJV2E0ZmdWUU9MMGpqcGZoOTI3bkVSQU02QXVsRDJRZERkcGI1T1RIRlB6N2tLZU1MdkYxY2xsUjJUX2RHSFQzeEZyN0JqWGxSOFBRS0tZZmpHcE55b1NkeW1qak5CMlBCdWl1UHpVWjJUQllyMnRyQTdWU2FOQTRKUQ?oc=5
+[DEBUG] isValidStory checking: Paramount sweetens hostile bid to stop Netflix-Warner Bros. 
+[DEBUG] isValidStory: ACCEPTED
+[DEBUG]   ACCEPTED! Stories from this source: 6
+
+--- Source Fetch Complete ---
+[NewsCore] Items processed: 6
+[NewsCore] Stories added: 6
+[NewsCore] Total pool size now: 54
+[DEBUG] Final free heap: 150136
+[DEBUG] Source stats - fetched: 6, accepted: 6, duplicates: 0, parse errors: 0
+========================================
+
+[DEBUG] Before age pruning: 54
+[DEBUG] After age pruning: 43
+[DEBUG] Stories in pool by source:
+[DEBUG]   Source 0 (VALDOSTA DAILY): 6
+[DEBUG]   Source 1 (THOMASVILLE T-E): 6
+[DEBUG]   Source 2 (MOULTRIE OBS): 6
+[DEBUG]   Source 3 (TALLY REPORTS): 6
+[DEBUG]   Source 4 (BAINBRIDGE POST): 6
+[DEBUG]   Source 6 (GREENE PUB): 6
+[DEBUG]   Source 10 (WJHG NEWS 7): 1
+[DEBUG]   Source 11 (CNN): 6
+[NewsCore] Queue Reshuffled. Size: 43
+[DEBUG] Queue composition by source:
+[DEBUG]   Source 0 (VALDOSTA DAILY): 6
+[DEBUG]   Source 1 (THOMASVILLE T-E): 6
+[DEBUG]   Source 2 (MOULTRIE OBS): 6
+[DEBUG]   Source 3 (TALLY REPORTS): 6
+[DEBUG]   Source 4 (BAINBRIDGE POST): 6
+[DEBUG]   Source 6 (GREENE PUB): 6
+[DEBUG]   Source 10 (WJHG NEWS 7): 1
+[DEBUG]   Source 11 (CNN): 6
+
+--- FINAL POOL STATE ---
+[NewsCore] Total Stories in Pool: 43
+[NewsCore] Playback Queue Size: 43
+[NewsCore] Free Heap: 206660
+
+[DEBUG] Stories in pool by source:
+[DEBUG]   Source 0 (VALDOSTA DAILY): 6
+[DEBUG]   Source 1 (THOMASVILLE T-E): 6
+[DEBUG]   Source 2 (MOULTRIE OBS): 6
+[DEBUG]   Source 3 (TALLY REPORTS): 6
+[DEBUG]   Source 4 (BAINBRIDGE POST): 6
+[DEBUG]   Source 6 (GREENE PUB): 6
+[DEBUG]   Source 10 (WJHG NEWS 7): 1
+[DEBUG]   Source 11 (CNN): 6
+
+[DEBUG] Sample of recent stories (up to 5):
+[DEBUG]   VALDOSTA DAILY - Lowndes Co. Property Trans. Feb. 7
+[DEBUG]     Time: Sat 10:23 AM | URL: https://news.google.com/rss/articles/CBMif0FVX3lxTE56Q1gtcER
+[DEBUG]   VALDOSTA DAILY - Southern Regional Technical College celebrates third cohort of Street to Station Program
+[DEBUG]     Time: Mon 7:59 AM | URL: https://news.google.com/rss/articles/CBMiywFBVV95cUxONGZGbjF
+[DEBUG]   VALDOSTA DAILY - Lowndes High School's Dave brothers win Congressional App Challenge for fourth time, advance to national...
+[DEBUG]     Time: Sun 5:06 PM | URL: https://news.google.com/rss/articles/CBMi7gFBVV95cUxPU2RCMEx
+[DEBUG]   VALDOSTA DAILY - Education Briefs Jan. 31
+[DEBUG]     Time: Thu 3:56 PM | URL: https://news.google.com/rss/articles/CBMidEFVX3lxTE96c0pOLVN
+[DEBUG]   VALDOSTA DAILY - Girls on the Run spring season kicks off Feb. 9
+[DEBUG]     Time: Wed 9:28 AM | URL: https://news.google.com/rss/articles/CBMikwFBVV95cUxON2Zkdld
+
+==========================================
+[SUMMARY] BATCH SOURCE STATISTICS
+==========================================
+[SUMMARY] Source 6 - GREENE PUB
+  Fetched: 6 | Accepted: 6 | Duplicates: 0 | Parse Errors: 0 | Consecutive Fails: 0
+  Accept Rate: 100.0%
+[SUMMARY] Source 7 - WFSU NEWS
+  Fetched: 0 | Accepted: 0 | Duplicates: 0 | Parse Errors: 0 | Consecutive Fails: 0
+[SUMMARY] Source 8 - SUWANNEE DEM
+  Fetched: 0 | Accepted: 0 | Duplicates: 0 | Parse Errors: 0 | Consecutive Fails: 0
+[SUMMARY] Source 9 - HAVANA HERALD
+  Fetched: 6 | Accepted: 6 | Duplicates: 0 | Parse Errors: 0 | Consecutive Fails: 0
+  Accept Rate: 100.0%
+[SUMMARY] Source 10 - WJHG NEWS 7
+  Fetched: 6 | Accepted: 6 | Duplicates: 0 | Parse Errors: 0 | Consecutive Fails: 0
+  Accept Rate: 100.0%
+[SUMMARY] Source 11 - CNN
+  Fetched: 6 | Accepted: 6 | Duplicates: 0 | Parse Errors: 0 | Consecutive Fails: 0
+  Accept Rate: 100.0%
+------------------------------------------
+[SUMMARY] Batch Totals - Fetched: 24 | Accepted: 24 | Duplicates: 0 | Errors: 0
+[SUMMARY] Overall Accept Rate: 100.0%
+==========================================
+
+###  NEWS REFRESH CYCLE COMPLETE      ###
+##########################################
+
+
+[NewsCore] Queue Reshuffled. Size: 43
+[DEBUG] Queue composition by source:
+[DEBUG]   Source 0 (VALDOSTA DAILY): 6
+[DEBUG]   Source 1 (THOMASVILLE T-E): 6
+[DEBUG]   Source 2 (MOULTRIE OBS): 6
+[DEBUG]   Source 3 (TALLY REPORTS): 6
+[DEBUG]   Source 4 (BAINBRIDGE POST): 6
+[DEBUG]   Source 6 (GREENE PUB): 6
+[DEBUG]   Source 10 (WJHG NEWS 7): 1
+[DEBUG]   Source 11 (CNN): 6
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 43
+[DEBUG] Selected story idx=29 from source 4 (BAINBRIDGE POST)
+[DEBUG] Headline: Bearcats, Lady Cats celebrated at Senior Night
+[DEBUG] getNextStoryIndex called. Forbidden sources: 4, | Queue size: 42
+[DEBUG] Selected story idx=34 from source 6 (GREENE PUB)
+[DEBUG] Headline: Speeding leads to drug bust
+[DEBUG] getNextStoryIndex called. Forbidden sources: 4,6, | Queue size: 41
+[DEBUG] Selected story idx=41 from source 11 (CNN)
+[DEBUG] Headline: Earth's core may contain as much as 45 oceans' worth of hydr
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 40
+[DEBUG] Selected story idx=16 from source 2 (MOULTRIE OBS)
+[DEBUG] Headline: Overcrowding constant issue at local animal shelter
+[DEBUG] getNextStoryIndex called. Forbidden sources: 2, | Queue size: 39
+[DEBUG] Selected story idx=1 from source 0 (VALDOSTA DAILY)
+[DEBUG] Headline: Southern Regional Technical College celebrates third cohort 
+[DEBUG] getNextStoryIndex called. Forbidden sources: 2,0, | Queue size: 38
+[DEBUG] Selected story idx=9 from source 1 (THOMASVILLE T-E)
+[DEBUG] Headline: Madison Dickerson joins the Sound of the South at Troy Unive
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 37
+[DEBUG] Selected story idx=19 from source 3 (TALLY REPORTS)
+[DEBUG] Headline: Florida emergency agency ran up $405 million immigration tab
+[DEBUG] getNextStoryIndex called. Forbidden sources: 3, | Queue size: 36
+[DEBUG] Selected story idx=32 from source 6 (GREENE PUB)
+[DEBUG] Headline: "Souper" Bowl Friday at MCCS
+[DEBUG] getNextStoryIndex called. Forbidden sources: 3,6, | Queue size: 35
+[DEBUG] Selected story idx=26 from source 4 (BAINBRIDGE POST)
+[DEBUG] Headline: State trooper among two airlifted following Decatur County c
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 34
+[DEBUG] Selected story idx=38 from source 11 (CNN)
+[DEBUG] Headline: Watch the new surveillance videos from Nancy Guthrie's home
+[DEBUG] getNextStoryIndex called. Forbidden sources: 11, | Queue size: 33
+[DEBUG] Selected story idx=22 from source 3 (TALLY REPORTS)
+[DEBUG] Headline: College of Law Celebrates 60 Years of Service
+[DEBUG] getNextStoryIndex called. Forbidden sources: 11,3, | Queue size: 32
+[DEBUG] Selected story idx=0 from source 0 (VALDOSTA DAILY)
+[DEBUG] Headline: Lowndes Co. Property Trans. Feb. 7
+[DEBUG] getNextStoryIndex called. Forbidden sources:  | Queue size: 31
+[DEBUG] Selected story idx=33 from source 6 (GREENE PUB)
+[DEBUG] Headline: Florida producers urged to report agricultural losses from w
+[DEBUG] getNextStoryIndex called. Forbidden sources: 6, | Queue size: 30
+[DEBUG] Selected story idx=8 from source 1 (THOMASVILLE T-E)
+[DEBUG] Headline: Local man charged in Crisp Co. vehicular homicide crash
+[DEBUG] getNextStoryIndex called. Forbidden sources: 6,1, | Queue size: 29
+[DEBUG] Selected story idx=4 from source 0 (VALDOSTA DAILY)
+[DEBUG] Headline: Girls on the Run spring season kicks off Feb. 9
+---- Closed the serial port COM4 ----

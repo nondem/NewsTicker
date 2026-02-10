@@ -75,13 +75,51 @@ void resetPlaybackQueue() {
     std::random_shuffle(playbackQueue.begin(), playbackQueue.end());
     Serial.print("[NewsCore] Queue Reshuffled. Size: ");
     Serial.println(playbackQueue.size());
+    #ifdef DEBUG_MODE
+    if (DEBUG_MODE) {
+        Serial.println("[DEBUG] Queue composition by source:");
+        int sourceCounts[30] = {0};
+        for (int idx : playbackQueue) {
+            if (idx < megaPool.size()) {
+                sourceCounts[megaPool[idx].sourceIndex]++;
+            }
+        }
+        for (int i = 0; i < 30; i++) {
+            if (sourceCounts[i] > 0) {
+                Serial.print("[DEBUG]   Source "); Serial.print(i); 
+                Serial.print(" ("); Serial.print(sources[i].name); 
+                Serial.print("): "); Serial.println(sourceCounts[i]);
+            }
+        }
+    }
+    #endif
 }
 
 // --- HELPER: GET NEXT UNIQUE STORY ---
 int getNextStoryIndex(const std::vector<int>& forbiddenSources) {
-    if (megaPool.empty()) return 0;
+    #ifdef DEBUG_MODE
+    if (DEBUG_MODE) {
+        Serial.print("[DEBUG] getNextStoryIndex called. Forbidden sources: ");
+        for (int src : forbiddenSources) {
+            Serial.print(src); Serial.print(",");
+        }
+        Serial.print(" | Queue size: "); Serial.println(playbackQueue.size());
+    }
+    #endif
+    
+    if (megaPool.empty()) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] megaPool is empty, returning 0");
+        #endif
+        return 0;
+    }
 
-    if (playbackQueue.empty()) resetPlaybackQueue();
+    if (playbackQueue.empty()) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] Queue empty, reshuffling...");
+        #endif
+        resetPlaybackQueue();
+    }
 
     std::vector<int> skippedCards;
     int foundIndex = -1;
@@ -91,7 +129,15 @@ int getNextStoryIndex(const std::vector<int>& forbiddenSources) {
         int idx = playbackQueue.back();
         playbackQueue.pop_back();
 
-        if (idx >= megaPool.size()) continue;
+        if (idx >= megaPool.size()) {
+            #ifdef DEBUG_MODE
+            if (DEBUG_MODE) {
+                Serial.print("[DEBUG] Invalid index "); Serial.print(idx);
+                Serial.print(" >= pool size "); Serial.println(megaPool.size());
+            }
+            #endif
+            continue;
+        }
 
         int src = megaPool[idx].sourceIndex;
         bool conflict = false;
@@ -106,24 +152,58 @@ int getNextStoryIndex(const std::vector<int>& forbiddenSources) {
 
         if (!conflict) {
             foundIndex = idx;
+            #ifdef DEBUG_MODE
+            if (DEBUG_MODE) {
+                Serial.print("[DEBUG] Selected story idx="); Serial.print(idx);
+                Serial.print(" from source "); Serial.print(src);
+                Serial.print(" ("); Serial.print(sources[src].name); Serial.println(")");
+                Serial.print("[DEBUG] Headline: ");
+                Serial.println(megaPool[idx].headline.substring(0, min(60, (int)megaPool[idx].headline.length())));
+            }
+            #endif
             break; 
         } else {
+            #ifdef DEBUG_MODE
+            if (DEBUG_MODE) {
+                Serial.print("[DEBUG] Skipping idx="); Serial.print(idx);
+                Serial.print(" (source "); Serial.print(src); Serial.println(" is forbidden)");
+            }
+            #endif
             skippedCards.push_back(idx); // Save conflict for later
         }
     }
 
     // Fallback: If EVERYTHING conflicts, take the first skipped one
     if (foundIndex == -1) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] All stories conflicted with forbidden list");
+        #endif
         if (!skippedCards.empty()) {
             foundIndex = skippedCards[0];
             skippedCards.erase(skippedCards.begin());
+            #ifdef DEBUG_MODE
+            if (DEBUG_MODE) {
+                Serial.print("[DEBUG] Using first skipped card idx="); Serial.println(foundIndex);
+            }
+            #endif
         } else {
             // Should not happen unless pool is empty
+            #ifdef DEBUG_MODE
+            if (DEBUG_MODE) Serial.println("[DEBUG] No skipped cards, reshuffling queue");
+            #endif
             resetPlaybackQueue();
             if(!playbackQueue.empty()) {
                 foundIndex = playbackQueue.back();
                 playbackQueue.pop_back();
+                #ifdef DEBUG_MODE
+                if (DEBUG_MODE) {
+                    Serial.print("[DEBUG] Selected from fresh queue: idx="); Serial.println(foundIndex);
+                }
+                #endif
             } else {
+                #ifdef DEBUG_MODE
+                if (DEBUG_MODE) Serial.println("[DEBUG] Queue still empty after reshuffle, returning 0");
+                #endif
                 return 0;
             }
         }
@@ -131,6 +211,12 @@ int getNextStoryIndex(const std::vector<int>& forbiddenSources) {
 
     // Return skipped cards to the BOTTOM of the deck
     if (!skippedCards.empty()) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) {
+            Serial.print("[DEBUG] Returning "); Serial.print(skippedCards.size());
+            Serial.println(" skipped cards to bottom of deck");
+        }
+        #endif
         playbackQueue.insert(playbackQueue.begin(), skippedCards.begin(), skippedCards.end());
     }
 
@@ -138,6 +224,14 @@ int getNextStoryIndex(const std::vector<int>& forbiddenSources) {
 }
 
 String cleanText(String raw) {
+  #ifdef DEBUG_MODE
+  if (DEBUG_MODE) {
+    Serial.print("[DEBUG] cleanText input length: "); Serial.println(raw.length());
+    Serial.print("[DEBUG] cleanText preview: ");
+    Serial.println(raw.substring(0, min(80, (int)raw.length())));
+  }
+  #endif
+  
   // 1. Basic HTML Cleanup
   raw.replace("<![CDATA[", ""); raw.replace("]]>", "");
   raw.replace("&apos;", "'"); raw.replace("&#39;", "'");
@@ -202,7 +296,18 @@ String cleanText(String raw) {
       } else {
           raw = raw.substring(0, MAX_HEADLINE_LEN - 3) + "...";
       }
+      #ifdef DEBUG_MODE
+      if (DEBUG_MODE) Serial.println("[DEBUG] cleanText cropped to max length");
+      #endif
   }
+  
+  #ifdef DEBUG_MODE
+  if (DEBUG_MODE) {
+    Serial.print("[DEBUG] cleanText output length: "); Serial.println(raw.length());
+    Serial.print("[DEBUG] cleanText result: "); Serial.println(raw);
+  }
+  #endif
+  
   return raw;
 }
 
@@ -274,33 +379,186 @@ String cleanURL(String raw) {
 
 // Validity Check (Junk Filter)
 bool isValidStory(String headline) {
-    if (headline.length() < 20) return false; 
+    #ifdef DEBUG_MODE
+    if (DEBUG_MODE) {
+        Serial.print("[DEBUG] isValidStory checking: ");
+        Serial.println(headline.substring(0, min(60, (int)headline.length())));
+    }
+    #endif
+    
+    if (headline.length() < 25) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - too short (< 25 chars)");
+        #endif
+        return false;
+    }
     String upper = headline; upper.toUpperCase();
     
     // Hard blocks (Not news)
-    if (upper.indexOf("TODAYS HEADLINES") >= 0) return false;
-    if (upper.indexOf("MORNING BRIEFING") >= 0) return false;
-    if (upper.indexOf("EVENING BRIEFING") >= 0) return false;
-    if (upper.indexOf("DAILY DIGEST") >= 0) return false;
-    if (upper.indexOf("SUBSCRIBE TO") >= 0) return false;
-    if (upper.indexOf("SIGN UP") >= 0) return false;
-    if (upper.indexOf("JAVASCRIPT") >= 0) return false;
-    if (upper.indexOf("ACCESS DENIED") >= 0) return false;
-    if (upper.indexOf("404 NOT FOUND") >= 0) return false;
-    if (upper.indexOf("ERROR") >= 0 && upper.length() < 50) return false;  // Short error messages
-    if (upper.indexOf("<!DOCTYPE") >= 0) return false;  // HTML page, not news
+    if (upper.indexOf("TODAYS HEADLINES") >= 0) { 
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - TODAYS HEADLINES");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("MORNING BRIEFING") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - MORNING BRIEFING");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("ABOUT US") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - ABOUT US");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("CONTACT US") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - CONTACT US");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("LATEST HEADLINES") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - LATEST HEADLINES");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("EVENING BRIEFING") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - EVENING BRIEFING");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("DAILY DIGEST") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - DAILY DIGEST");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("SUBSCRIBE TO") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - SUBSCRIBE TO");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("SIGN UP") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - SIGN UP");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("JAVASCRIPT") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - JAVASCRIPT");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("ACCESS DENIED") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - ACCESS DENIED");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("404 NOT FOUND") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - 404 NOT FOUND");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("ERROR") >= 0 && upper.length() < 50) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - ERROR message");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("<!DOCTYPE") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - HTML DOCTYPE");
+        #endif
+        return false;
+    }
 
     // Quality blocks (Clickbait/Fluff)
-    if (upper.startsWith("HOW TO ")) return false;
-    if (upper.startsWith("BEST OF ")) return false;
-    if (upper.startsWith("DEALS: ")) return false;
-    if (upper.startsWith("HOROSCOPE")) return false;
-    if (upper.startsWith("WORDLE ")) return false;
-    if (upper.startsWith("CROSSWORD ")) return false;
-    if (upper.startsWith("10 THINGS ")) return false;
-    if (upper.startsWith("5 THINGS ")) return false;
-    if (upper.startsWith("TOP ") && upper.indexOf("STORIES") >= 0) return false;
-    if (upper.startsWith("GALLERY: ")) return false;
+    if (upper.startsWith("HOW TO ")) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - HOW TO");
+        #endif
+        return false;
+    }
+    if (upper.startsWith("BEST OF ")) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - BEST OF");
+        #endif
+        return false;
+    }
+    if (upper.startsWith("DEALS: ")) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - DEALS");
+        #endif
+        return false;
+    }
+    if (upper.startsWith("HOROSCOPE")) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - HOROSCOPE");
+        #endif
+        return false;
+    }
+    if (upper.startsWith("WORDLE ")) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - WORDLE");
+        #endif
+        return false;
+    }
+    if (upper.startsWith("CROSSWORD ")) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - CROSSWORD");
+        #endif
+        return false;
+    }
+    if (upper.startsWith("10 THINGS ")) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - 10 THINGS");
+        #endif
+        return false;
+    }
+    if (upper.startsWith("5 THINGS ")) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - 5 THINGS");
+        #endif
+        return false;
+    }
+    if (upper.startsWith("TOP ") && upper.indexOf("STORIES") >= 0) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - TOP STORIES");
+        #endif
+        return false;
+    }
+    if (upper.startsWith("GALLERY: ")) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - GALLERY");
+        #endif
+        return false;
+    }
+    
+    // Generic/weak titles
+    if (upper.indexOf("QUESTION OF THE") >= 0 && upper.length() < 50) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - Generic question title");
+        #endif
+        return false;
+    }
+    if (upper.indexOf("ARCHIVES") >= 0 && upper.length() < 50) {
+        #ifdef DEBUG_MODE
+        if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: REJECTED - Archive page");
+        #endif
+        return false;
+    }
+    
+    #ifdef DEBUG_MODE
+    if (DEBUG_MODE) Serial.println("[DEBUG] isValidStory: ACCEPTED");
+    #endif
     
     return true; 
 }
@@ -474,8 +732,19 @@ void ensureWiFi() {
 
 void fetchAndPool(int sourceIdx) {
   esp_task_wdt_reset();
-    Serial.print("[NewsCore] Fetching: ");
-    Serial.println(sources[sourceIdx].name);
+  Serial.println("\n========================================");
+  Serial.print("[NewsCore] Fetching: ");
+  Serial.println(sources[sourceIdx].name);
+  Serial.print("[NewsCore] Source URL: ");
+  Serial.println(sources[sourceIdx].url);
+  Serial.print("[NewsCore] Is WordPress: ");
+  Serial.println(sources[sourceIdx].isWordpress ? "Yes" : "No");
+  #ifdef DEBUG_MODE
+  if (DEBUG_MODE) {
+    Serial.print("[DEBUG] Current pool size: "); Serial.println(megaPool.size());
+    Serial.print("[DEBUG] Free heap: "); Serial.println(ESP.getFreeHeap());
+  }
+  #endif
   
   // Skip sources that have failed too many times in a row
   if (sourceStats[sourceIdx].consecutiveFails > 2) {
@@ -674,8 +943,20 @@ void fetchAndPool(int sourceIdx) {
         } else { break; }
       }
       
-      Serial.print("[NewsCore] Source Complete. Items processed: "); Serial.print(itemsProcessed);
-      Serial.print(", Stories added: "); Serial.println(storiesFound);
+      Serial.println("\n--- Source Fetch Complete ---");
+      Serial.print("[NewsCore] Items processed: "); Serial.println(itemsProcessed);
+      Serial.print("[NewsCore] Stories added: "); Serial.println(storiesFound);
+      Serial.print("[NewsCore] Total pool size now: "); Serial.println(megaPool.size());
+      #ifdef DEBUG_MODE
+      if (DEBUG_MODE) {
+        Serial.print("[DEBUG] Final free heap: "); Serial.println(ESP.getFreeHeap());
+        Serial.print("[DEBUG] Source stats - fetched: "); Serial.print(sourceStats[sourceIdx].fetched);
+        Serial.print(", accepted: "); Serial.print(sourceStats[sourceIdx].accepted);
+        Serial.print(", duplicates: "); Serial.print(sourceStats[sourceIdx].duplicates);
+        Serial.print(", parse errors: "); Serial.println(sourceStats[sourceIdx].parseErrors);
+      }
+      #endif
+      Serial.println("========================================\n");
       
       if ((millis() - sourceStart) >= SOURCE_FETCH_TIMEOUT_MS) {
                     Serial.println("[NewsCore] Source fetch timeout.");
@@ -700,7 +981,24 @@ void refreshNewsData(int batchIndex) {
   if (OFFLINE_MODE) { return; }
   #endif
 
-  Serial.print("Fetch Start. Batch: "); Serial.println(batchIndex);
+  Serial.println("\n\n##########################################");
+  Serial.println("###  NEWS REFRESH CYCLE STARTING      ###");
+  Serial.println("##########################################");
+  Serial.print("[NewsCore] Batch Index: "); Serial.println(batchIndex);
+  Serial.print("[NewsCore] Batch Range: Sources "); 
+  Serial.print(batchIndex * 6); Serial.print(" - "); Serial.println((batchIndex * 6) + 5);
+  
+  #ifdef DEBUG_MODE
+  if (DEBUG_MODE) {
+    Serial.print("[DEBUG] Pre-fetch pool size: "); Serial.println(megaPool.size());
+    Serial.print("[DEBUG] Pre-fetch free heap: "); Serial.println(ESP.getFreeHeap());
+    Serial.print("[DEBUG] WiFi status: "); 
+    Serial.println(WiFi.status() == WL_CONNECTED ? "Connected" : "Disconnected");
+    if (WiFi.status() == WL_CONNECTED) {
+      Serial.print("[DEBUG] WiFi RSSI: "); Serial.println(WiFi.RSSI());
+    }
+  }
+  #endif
   
   // Reset stats for this batch
   int start = batchIndex * 6;
@@ -748,10 +1046,11 @@ void refreshNewsData(int batchIndex) {
   for(const auto& s : megaPool) { if(s.timestamp > newest) newest = s.timestamp; }
   time_t cutoff = newest - MAX_AGE_SECONDS; // 36 Hours
   
-  // Exempt ONLY Google News aggregators (0=Valdosta, 1=Thomasville, 2=Moultrie)
+  // Exempt Google News aggregators and sources with historically older content
+  // 0=Valdosta, 1=Thomasville, 2=Moultrie, 5=Wakulla Sun, 10=WJHG, 11=CNN
   // These return older/incorrectly dated articles due to Google News aggregation
-  const int exemptSources[] = {0, 1, 2};
-  const int exemptSourceCount = 3;
+  const int exemptSources[] = {0, 1, 2, 5, 10, 11};
+  const int exemptSourceCount = 6;
   
   bool isExempt[30] = {false};
   for(int i = 0; i < exemptSourceCount; i++) {
@@ -791,30 +1090,71 @@ void refreshNewsData(int batchIndex) {
   resetPlaybackQueue();
   
   esp_task_wdt_reset();
-  Serial.print("Total Stories: "); Serial.println(megaPool.size());
+  Serial.println("\n--- FINAL POOL STATE ---");
+  Serial.print("[NewsCore] Total Stories in Pool: "); Serial.println(megaPool.size());
+  Serial.print("[NewsCore] Playback Queue Size: "); Serial.println(playbackQueue.size());
+  Serial.print("[NewsCore] Free Heap: "); Serial.println(ESP.getFreeHeap());
   
-  // DEBUG: Log all stories in pool by source
-  Serial.println("[DEBUG] Stories in pool by source:");
-  for(int src = 0; src < 30; src++) {
-      int count = 0;
-      for(const auto& s : megaPool) {
-          if (s.sourceIndex == src) count++;
-      }
-      if (count > 0) {
-          Serial.print("[DEBUG]   Source "); Serial.print(src); Serial.print(" ("); 
-          Serial.print(sources[src].name); Serial.print("): "); Serial.println(count);
-      }
+  #ifdef DEBUG_MODE
+  if (DEBUG_MODE) {
+    // Log all stories in pool by source
+    Serial.println("\n[DEBUG] Stories in pool by source:");
+    for(int src = 0; src < 30; src++) {
+        int count = 0;
+        for(const auto& s : megaPool) {
+            if (s.sourceIndex == src) count++;
+        }
+        if (count > 0) {
+            Serial.print("[DEBUG]   Source "); Serial.print(src); Serial.print(" ("); 
+            Serial.print(sources[src].name); Serial.print("): "); Serial.println(count);
+        }
+    }
+    
+    // Show a sample of recent stories
+    Serial.println("\n[DEBUG] Sample of recent stories (up to 5):");
+    int sampleCount = 0;
+    for(const auto& s : megaPool) {
+        if (sampleCount >= 5) break;
+        Serial.print("[DEBUG]   "); Serial.print(sources[s.sourceIndex].name);
+        Serial.print(" - "); Serial.println(s.headline);
+        Serial.print("[DEBUG]     Time: "); Serial.print(s.timeStr);
+        Serial.print(" | URL: "); Serial.println(s.url.substring(0, min(60, (int)s.url.length())));
+        sampleCount++;
+    }
   }
+  #endif
 
   // Batch summary (per-source stats)
-  Serial.println("[SUMMARY] Batch source stats:");
+  Serial.println("\n==========================================");
+  Serial.println("[SUMMARY] BATCH SOURCE STATISTICS");
+  Serial.println("==========================================");
+  int totalFetched = 0, totalAccepted = 0, totalDups = 0, totalErrors = 0;
   for (int src = start; src < end; src++) {
-      Serial.print("[SUMMARY] ");
-      Serial.print(src); Serial.print(" ("); Serial.print(sources[src].name); Serial.print(") ");
-      Serial.print("fetched="); Serial.print(sourceStats[src].fetched);
-      Serial.print(" accepted="); Serial.print(sourceStats[src].accepted);
-      Serial.print(" dup="); Serial.print(sourceStats[src].duplicates);
-      Serial.print(" parseErr="); Serial.print(sourceStats[src].parseErrors);
-      Serial.print(" consecFail="); Serial.println(sourceStats[src].consecutiveFails);
+      Serial.print("[SUMMARY] Source "); Serial.print(src); Serial.print(" - "); Serial.println(sources[src].name);
+      Serial.print("  Fetched: "); Serial.print(sourceStats[src].fetched);
+      Serial.print(" | Accepted: "); Serial.print(sourceStats[src].accepted);
+      Serial.print(" | Duplicates: "); Serial.print(sourceStats[src].duplicates);
+      Serial.print(" | Parse Errors: "); Serial.print(sourceStats[src].parseErrors);
+      Serial.print(" | Consecutive Fails: "); Serial.println(sourceStats[src].consecutiveFails);
+      if (sourceStats[src].fetched > 0) {
+        float acceptRate = (float)sourceStats[src].accepted / sourceStats[src].fetched * 100.0;
+        Serial.print("  Accept Rate: "); Serial.print(acceptRate, 1); Serial.println("%");
+      }
+      totalFetched += sourceStats[src].fetched;
+      totalAccepted += sourceStats[src].accepted;
+      totalDups += sourceStats[src].duplicates;
+      totalErrors += sourceStats[src].parseErrors;
   }
+  Serial.println("------------------------------------------");
+  Serial.print("[SUMMARY] Batch Totals - Fetched: "); Serial.print(totalFetched);
+  Serial.print(" | Accepted: "); Serial.print(totalAccepted);
+  Serial.print(" | Duplicates: "); Serial.print(totalDups);
+  Serial.print(" | Errors: "); Serial.println(totalErrors);
+  if (totalFetched > 0) {
+    float overallRate = (float)totalAccepted / totalFetched * 100.0;
+    Serial.print("[SUMMARY] Overall Accept Rate: "); Serial.print(overallRate, 1); Serial.println("%");
+  }
+  Serial.println("==========================================\n");
+  Serial.println("###  NEWS REFRESH CYCLE COMPLETE      ###");
+  Serial.println("##########################################\n\n");
 }

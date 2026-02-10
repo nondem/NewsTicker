@@ -4,14 +4,15 @@
 // --- USER SETTINGS ---
 #define EASTER_EGG_TEXT     "Randys Waterfall Ticker 2026"
 #define USER_TIMEZONE_HOUR  -5  // EST
-#define OFFLINE_MODE        false 
+#define OFFLINE_MODE        false
+#define DEBUG_MODE          false  // Enable verbose logging 
 
 // --- SYSTEM SETTINGS ---
 #define WDT_TIMEOUT_SECONDS 90  
 #define UPDATE_INTERVAL_MS  900000  // 15 Minutes (Cycles 1/3rd of sources each time)
 #define CAROUSEL_INTERVAL_MS 15000  // 15 Seconds per slide
 #define WAVE_DELAY_MS       500          
-#define PARSE_TIMEOUT_MS    10000   // [UPDATED] 10 Seconds (Stall Killer)
+#define PARSE_TIMEOUT_MS    15000   // [UPDATED] 15 Seconds (Increased for slow sources)
 #define SOURCE_FETCH_TIMEOUT_MS 20000  // Max time per source fetch
 #define ITEM_PARSE_TIMEOUT_MS   8000   // Max time per item parse
 
