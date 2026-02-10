@@ -108,3 +108,76 @@ void showConfigScreen() {
   drawText(10, 240, 460, "THEN BROWSE TO IP:", WHITE, BLACK, 2, false);
   drawText(10, 270, 460, "http://1.1.1.1", YELLOW, BLACK, 2, false);
 }
+
+void drawSplashScreen() {
+  fillRect(0, 0, 480, 320, BLACK);
+  
+  // Title (RED instead of CYAN)
+  drawText(10, 40, 460, "RANDY'S NEWS TICKER", RED, BLACK, 3, true);
+  
+  // Version/Status
+  drawText(10, 110, 460, "v50 Production Build", WHITE, BLACK, 2, false);
+  
+  // WiFi Info
+  drawText(10, 160, 460, "WiFi Connected:", YELLOW, BLACK, 2, false);
+  String ipAddr = WiFi.localIP().toString();
+  drawText(10, 190, 460, ipAddr.c_str(), GREEN, BLACK, 2, false);
+  
+  String ssidStr = "SSID: " + WiFi.SSID();
+  drawText(10, 220, 460, ssidStr.c_str(), WHITE, BLACK, 2, false);
+  
+  // Wait for long press to start
+  drawText(10, 270, 460, "LONG PRESS TO START", GOLD, BLACK, 2, true);
+  
+  // Wait for long press with 5-minute timeout
+  unsigned long splashStart = millis();
+  const unsigned long SPLASH_TIMEOUT_MS = 300000;  // 5 minutes (300 seconds)
+  bool longPressDetected = false;
+  int lastDisplayedSeconds = -1;  // Track last displayed value to avoid flicker
+  
+  while (millis() - splashStart < SPLASH_TIMEOUT_MS && !longPressDetected) {
+    esp_task_wdt_reset();
+    
+    // Update countdown timer display ONLY when seconds change
+    unsigned long elapsed = millis() - splashStart;
+    int secondsRemaining = 300 - (elapsed / 1000);
+    
+    if (secondsRemaining != lastDisplayedSeconds) {
+      lastDisplayedSeconds = secondsRemaining;
+      int minutes = secondsRemaining / 60;
+      int seconds = secondsRemaining % 60;
+      char timeoutStr[30];
+      sprintf(timeoutStr, "Auto-start in %d:%02d", minutes, seconds);
+      fillRect(10, 290, 460, 20, BLACK);  // Clear previous text
+      drawText(10, 290, 460, timeoutStr, GREY, BLACK, 1, false);
+    }
+    
+    if (digitalRead(TOUCH_IRQ) == LOW) {
+      unsigned long startPress = millis();
+      bool isLongPress = false;
+      
+      // Wait for long press (800ms)
+      while (digitalRead(TOUCH_IRQ) == LOW) {
+        esp_task_wdt_reset();
+        delay(10);
+        if (millis() - startPress > 800) {
+          isLongPress = true;
+          while (digitalRead(TOUCH_IRQ) == LOW) { 
+            esp_task_wdt_reset(); 
+            delay(10); 
+          }
+          break;
+        }
+      }
+      
+      // If long press detected, exit splash screen immediately
+      if (isLongPress) {
+        longPressDetected = true;
+        break;
+      }
+    }
+    delay(50);
+  }
+  
+  delay(200);  // Debounce
+}

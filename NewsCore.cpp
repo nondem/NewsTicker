@@ -35,7 +35,7 @@ NewsSource sources[30] = {
 
     // BATCH B (6-11)
     { "GREENE PUB",      "https://www.greenepublishing.com/feed/",                              WHITE, DARKGREEN, WHITE, true  },
-    { "APALACH TIMES",   "https://news.google.com/rss/search?q=site:apalachicolatimes.com",     WHITE, BLUE,    CYAN,   false },
+    { "WFSU NEWS",       "https://news.wfsu.org/wfsu-local-news/rss.xml",                       WHITE, NAVY,      GOLD,   true },
     { "SUWANNEE DEM",    "https://news.google.com/rss/search?q=site:suwanneedemocrat.com",      WHITE, BLUE,    WHITE,  false },
     { "HAVANA HERALD",   "https://theherald.online/feed/",                                      BLACK, WHITE,   BLACK,  true  },
     { "WJHG NEWS 7",     "https://news.google.com/rss/search?q=site:wjhg.com",                  WHITE, RED,     BLUE,   false },
@@ -260,6 +260,15 @@ String cleanURL(String raw) {
   raw.replace("\t", ""); raw.replace(" ", "");  
   raw.replace("&amp;", "&"); 
   raw.trim();
+  
+  // Additional URL validation
+  if (!raw.startsWith("http://") && !raw.startsWith("https://")) {
+      return "";  // Invalid protocol
+  }
+  if (raw.length() > 500) {
+      raw = raw.substring(0, 500);  // Truncate suspiciously long URLs
+  }
+  
   return raw;
 }
 
@@ -278,6 +287,8 @@ bool isValidStory(String headline) {
     if (upper.indexOf("JAVASCRIPT") >= 0) return false;
     if (upper.indexOf("ACCESS DENIED") >= 0) return false;
     if (upper.indexOf("404 NOT FOUND") >= 0) return false;
+    if (upper.indexOf("ERROR") >= 0 && upper.length() < 50) return false;  // Short error messages
+    if (upper.indexOf("<!DOCTYPE") >= 0) return false;  // HTML page, not news
 
     // Quality blocks (Clickbait/Fluff)
     if (upper.startsWith("HOW TO ")) return false;
@@ -288,6 +299,8 @@ bool isValidStory(String headline) {
     if (upper.startsWith("CROSSWORD ")) return false;
     if (upper.startsWith("10 THINGS ")) return false;
     if (upper.startsWith("5 THINGS ")) return false;
+    if (upper.startsWith("TOP ") && upper.indexOf("STORIES") >= 0) return false;
+    if (upper.startsWith("GALLERY: ")) return false;
     
     return true; 
 }
@@ -417,41 +430,21 @@ time_t parseRSSDate(String d) {
       Serial.print("[WARN] Date too short: "), Serial.println(d);
       return 0;
   }
-  int firstSpace = d.indexOf(' ');
-  if(firstSpace == -1) return 0;
-  String clean = d.substring(firstSpace + 1);
-  int s1 = clean.indexOf(' ');
-  int s2 = clean.indexOf(' ', s1 + 1);
-  int s3 = clean.indexOf(' ', s2 + 1);
-  int s4 = clean.indexOf(' ', s3 + 1);
-  if(s1 < 0 || s2 < 0 || s3 < 0 || s4 < 0) return 0;
-  String m = clean.substring(s1 + 1, s2);
-  int mon = -1;
-  if(m=="Jan") mon=0; else if(m=="Feb") mon=1; else if(m=="Mar") mon=2; else if(m=="Apr") mon=3;
-  else if(m=="May") mon=4; else if(m=="Jun") mon=5; else if(m=="Jul") mon=6;
-  else if(m=="Aug") mon=7; else if(m=="Sep") mon=8; else if(m=="Oct") mon=9;
-  else if(m=="Nov") mon=10; else if(m=="Dec") mon=11;
-  if (mon < 0) {
-      Serial.print("[WARN] Invalid month: "), Serial.println(m);
+  
+  // Try strptime with standard RFC 2822 format: "Wed, 09 Feb 2026 14:30:45 +0000"
+  const char* result = strptime(d.c_str(), "%a, %d %b %Y %H:%M:%S", &t);
+  if (!result) {
+      Serial.print("[WARN] Date parse failed: "), Serial.println(d);
       return 0;
   }
-  int day = clean.substring(0, s1).toInt();
-  int year = clean.substring(s2 + 1, s3).toInt();
-  String hms = clean.substring(s3 + 1, s4);
-  int hour = hms.substring(0, 2).toInt();
-  int minute = hms.substring(3, 5).toInt();
-  int second = hms.substring(6, 8).toInt();
-  if (day < 1 || day > 31) { Serial.println("[WARN] Day out of range"); return 0; }
-  if (hour < 0 || hour > 23) { Serial.println("[WARN] Hour out of range"); return 0; }
-  if (minute < 0 || minute > 59) { Serial.println("[WARN] Minute out of range"); return 0; }
-  if (second < 0 || second > 59) { Serial.println("[WARN] Second out of range"); return 0; }
-  if (year < 2020 || year > 2100) { Serial.println("[WARN] Year out of range"); return 0; }
-  t.tm_mday = day;
-  t.tm_mon = mon;
-  t.tm_year = year - 1900;
-  t.tm_hour = hour;
-  t.tm_min = minute;
-  t.tm_sec = second;
+  
+  // Validate parsed values
+  if (t.tm_mday < 1 || t.tm_mday > 31) { Serial.println("[WARN] Day out of range"); return 0; }
+  if (t.tm_hour < 0 || t.tm_hour > 23) { Serial.println("[WARN] Hour out of range"); return 0; }
+  if (t.tm_min < 0 || t.tm_min > 59) { Serial.println("[WARN] Minute out of range"); return 0; }
+  if (t.tm_sec < 0 || t.tm_sec > 59) { Serial.println("[WARN] Second out of range"); return 0; }
+  if (t.tm_year + 1900 < 2020 || t.tm_year + 1900 > 2100) { Serial.println("[WARN] Year out of range"); return 0; }
+  
   return mktime(&t); 
 }
 
@@ -483,6 +476,14 @@ void fetchAndPool(int sourceIdx) {
   esp_task_wdt_reset();
     Serial.print("[NewsCore] Fetching: ");
     Serial.println(sources[sourceIdx].name);
+  
+  // Skip sources that have failed too many times in a row
+  if (sourceStats[sourceIdx].consecutiveFails > 2) {
+      Serial.print("[NewsCore] SKIP - Source too unreliable (failures: ");
+      Serial.print(sourceStats[sourceIdx].consecutiveFails);
+      Serial.println(")");
+      return;
+  }
   
   // Per-source tracking
   sourceStats[sourceIdx].lastFetchMs = millis();
@@ -598,8 +599,15 @@ void fetchAndPool(int sourceIdx) {
                Serial.print("[DEBUG]   Cleaned Title: "); Serial.println(s.headline.length() > 50 ? s.headline.substring(0, 50) + "..." : s.headline);
                Serial.print("[DEBUG]   Cleaned URL: "); Serial.println(s.url);
                
-               if (s.url.length() < 12 || !s.url.startsWith("http")) {
+               if (s.url.length() < 12 || s.url.length() > 500 || !s.url.startsWith("http")) {
                    Serial.println("[DEBUG]   REJECTED: Invalid URL");
+                   sourceStats[sourceIdx].parseErrors++;
+                   sourceStats[sourceIdx].consecutiveFails++;
+                   continue;
+               }
+               // Check for redirect loops or obvious bad URLs
+               if (s.url.indexOf("://://") >= 0 || s.url.indexOf("javascript:") >= 0) {
+                   Serial.println("[DEBUG]   REJECTED: Malicious URL detected");
                    sourceStats[sourceIdx].parseErrors++;
                    sourceStats[sourceIdx].consecutiveFails++;
                    continue;

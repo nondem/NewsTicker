@@ -19,5 +19,6 @@ void drawSyncStatus(long remainingMs, bool isSyncing, long intervalMs);
 // --- SPECIAL SCREENS ---
 void triggerEasterEgg();
 void showConfigScreen();
+void drawSplashScreen();
 
 #endif

@@ -111,6 +111,9 @@ void setup() {
   drawText(10, 150, 460, "WIFI: CONNECTED!", GREEN, BLACK, 2);
   delay(1000);
 
+  // --- 30 SECOND SPLASH SCREEN ---
+  drawSplashScreen();
+
   ArduinoOTA.setHostname("RandyTicker");
   ArduinoOTA.onStart([]() { digitalWrite(LCD_BL, LOW); esp_task_wdt_reset(); });
   ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) { esp_task_wdt_reset(); });
